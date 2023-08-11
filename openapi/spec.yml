@@ -1,0 +1,3108 @@
+components:
+  schemas:
+    account:
+      properties:
+        account_address:
+          type: string
+        account_iban:
+          type: string
+        account_name:
+          type: string
+        bank_address:
+          type: string
+        bank_name:
+          type: string
+        bank_swift:
+          type: string
+        id:
+          format: uuid
+          type: string
+        label:
+          type: string
+      required:
+      - label
+      - bank_name
+      - bank_address
+      - bank_swift
+      - account_name
+      - account_iban
+      - account_address
+      type: object
+    accountCreate:
+      properties:
+        account_address:
+          type: string
+        account_iban:
+          type: string
+        account_name:
+          type: string
+        bank_address:
+          type: string
+        bank_name:
+          type: string
+        bank_swift:
+          type: string
+        label:
+          type: string
+      required:
+      - label
+      - bank_name
+      - bank_address
+      - bank_swift
+      - account_name
+      - account_iban
+      - account_address
+      type: object
+    accountPartial:
+      properties:
+        account_address:
+          type: string
+        account_iban:
+          type: string
+        account_name:
+          type: string
+        bank_address:
+          type: string
+        bank_name:
+          type: string
+        bank_swift:
+          type: string
+        label:
+          type: string
+      type: object
+    accountUpdate:
+      properties:
+        account_address:
+          type: string
+        account_iban:
+          type: string
+        account_name:
+          type: string
+        bank_address:
+          type: string
+        bank_name:
+          type: string
+        bank_swift:
+          type: string
+        label:
+          type: string
+      required:
+      - label
+      - bank_name
+      - bank_address
+      - bank_swift
+      - account_name
+      - account_iban
+      - account_address
+      type: object
+    accountView:
+      properties:
+        account_address:
+          type: string
+        account_iban:
+          type: string
+        account_name:
+          type: string
+        bank_address:
+          type: string
+        bank_name:
+          type: string
+        bank_swift:
+          type: string
+        id:
+          format: uuid
+          type: string
+        label:
+          type: string
+      type: object
+    category:
+      properties:
+        category_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      type: object
+    categoryCreate:
+      properties:
+        category_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      type: object
+    categoryPartial:
+      properties:
+        category_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+    categoryUpdate:
+      properties:
+        category_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      type: object
+    categoryView:
+      properties:
+        category:
+          $ref: '#/components/schemas/categoryView'
+        category_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/itemView'
+          type: array
+        name:
+          type: string
+      type: object
+    company:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        crn:
+          type: string
+        email:
+          format: email
+          type: string
+        id:
+          format: uuid
+          type: string
+        mobile:
+          type: string
+        name:
+          type: string
+        trn:
+          type: string
+      required:
+      - name
+      - address
+      - crn
+      - trn
+      - contact
+      - mobile
+      - email
+      type: object
+    companyCreate:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        crn:
+          type: string
+        email:
+          format: email
+          type: string
+        mobile:
+          type: string
+        name:
+          type: string
+        trn:
+          type: string
+      required:
+      - name
+      - address
+      - crn
+      - trn
+      - contact
+      - mobile
+      - email
+      type: object
+    companyPartial:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        crn:
+          type: string
+        email:
+          format: email
+          type: string
+        mobile:
+          type: string
+        name:
+          type: string
+        trn:
+          type: string
+      type: object
+    companyUpdate:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        crn:
+          type: string
+        email:
+          format: email
+          type: string
+        mobile:
+          type: string
+        name:
+          type: string
+        trn:
+          type: string
+      required:
+      - name
+      - address
+      - crn
+      - trn
+      - contact
+      - mobile
+      - email
+      type: object
+    companyView:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        crn:
+          type: string
+        email:
+          format: email
+          type: string
+        id:
+          format: uuid
+          type: string
+        mobile:
+          type: string
+        name:
+          type: string
+        trn:
+          type: string
+      type: object
+    currency:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+      required:
+      - id
+      - name
+      - symbol
+      type: object
+    currencyCreate:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+      required:
+      - id
+      - name
+      - symbol
+      type: object
+    currencyPartial:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+      type: object
+    currencyUpdate:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+      required:
+      - id
+      - name
+      - symbol
+      type: object
+    currencyView:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+      type: object
+    customer:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        currency_id:
+          type: string
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        payment_term:
+          type: integer
+      required:
+      - name
+      type: object
+    customerCreate:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        currency_id:
+          type: string
+        name:
+          type: string
+        payment_term:
+          type: integer
+      required:
+      - name
+      type: object
+    customerPartial:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        currency_id:
+          type: string
+        name:
+          type: string
+        payment_term:
+          type: integer
+      type: object
+    customerUpdate:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        currency_id:
+          type: string
+        name:
+          type: string
+        payment_term:
+          type: integer
+      required:
+      - name
+      type: object
+    customerView:
+      properties:
+        address:
+          type: string
+        contact:
+          type: string
+        currency:
+          $ref: '#/components/schemas/currencyView'
+        currency_id:
+          type: string
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        payment_term:
+          type: integer
+        sales:
+          items:
+            $ref: '#/components/schemas/saleView'
+          type: array
+      type: object
+    item:
+      properties:
+        category_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      type: object
+    itemCreate:
+      properties:
+        category_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      type: object
+    itemPartial:
+      properties:
+        category_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+    itemUpdate:
+      properties:
+        category_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      type: object
+    itemView:
+      properties:
+        category:
+          $ref: '#/components/schemas/categoryView'
+        category_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+    login:
+      properties:
+        email:
+          format: email
+          type: string
+        id:
+          format: uuid
+          type: string
+        password:
+          format: password
+          type: string
+      required:
+      - email
+      - password
+      type: object
+    loginCreate:
+      properties:
+        email:
+          format: email
+          type: string
+        password:
+          format: password
+          type: string
+      required:
+      - email
+      - password
+      type: object
+    loginPartial:
+      properties:
+        email:
+          format: email
+          type: string
+        password:
+          format: password
+          type: string
+      type: object
+    loginUpdate:
+      properties:
+        email:
+          format: email
+          type: string
+        password:
+          format: password
+          type: string
+      required:
+      - email
+      - password
+      type: object
+    loginView:
+      properties:
+        email:
+          format: email
+          type: string
+        id:
+          format: uuid
+          type: string
+        password:
+          format: password
+          type: string
+      type: object
+    permission:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    permissionCreate:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    permissionPartial:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    permissionUpdate:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    permissionView:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    role:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    roleCreate:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    rolePartial:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    rolePermission:
+      properties:
+        id:
+          format: uuid
+          type: string
+        permission_id:
+          type: string
+        role_id:
+          type: string
+      required:
+      - id
+      - role_id
+      - permission_id
+      type: object
+    rolePermissionCreate:
+      properties:
+        id:
+          format: uuid
+          type: string
+        permission_id:
+          type: string
+        role_id:
+          type: string
+      required:
+      - id
+      - role_id
+      - permission_id
+      type: object
+    rolePermissionPartial:
+      properties:
+        id:
+          format: uuid
+          type: string
+        permission_id:
+          type: string
+        role_id:
+          type: string
+      type: object
+    rolePermissionUpdate:
+      properties:
+        id:
+          format: uuid
+          type: string
+        permission_id:
+          type: string
+        role_id:
+          type: string
+      required:
+      - id
+      - role_id
+      - permission_id
+      type: object
+    rolePermissionView:
+      properties:
+        id:
+          format: uuid
+          type: string
+        permission_id:
+          type: string
+        role_id:
+          type: string
+      type: object
+    roleUpdate:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    roleView:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    sale:
+      properties:
+        account_id:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        confirmed:
+          type: boolean
+        currency_id:
+          type: string
+        customer_id:
+          format: uuid
+          type: string
+        date:
+          format: date
+          type: string
+        due_date:
+          format: date
+          type: string
+        id:
+          format: uuid
+          type: string
+        number:
+          type: integer
+        place:
+          type: string
+        reference:
+          type: string
+        reference_date:
+          format: date
+          type: string
+        total:
+          type: number
+      required:
+      - company_id
+      - account_id
+      - customer_id
+      - date
+      - currency_id
+      - total
+      - confirmed
+      type: object
+    saleCreate:
+      properties:
+        account_id:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        confirmed:
+          type: boolean
+        currency_id:
+          type: string
+        customer_id:
+          format: uuid
+          type: string
+        date:
+          format: date
+          type: string
+        due_date:
+          format: date
+          type: string
+        place:
+          type: string
+        reference:
+          type: string
+        reference_date:
+          format: date
+          type: string
+      required:
+      - company_id
+      - account_id
+      - customer_id
+      - date
+      - currency_id
+      - confirmed
+      type: object
+    saleItem:
+      properties:
+        description:
+          type: string
+        id:
+          format: uuid
+          type: string
+        item_id:
+          format: uuid
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+        sale_id:
+          format: uuid
+          type: string
+      required:
+      - sale_id
+      - item_id
+      - quantity
+      - price
+      type: object
+    saleItemCreate:
+      properties:
+        description:
+          type: string
+        item_id:
+          format: uuid
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+        sale_id:
+          format: uuid
+          type: string
+      required:
+      - sale_id
+      - item_id
+      - quantity
+      - price
+      type: object
+    saleItemPartial:
+      properties:
+        description:
+          type: string
+        item_id:
+          format: uuid
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+        sale_id:
+          format: uuid
+          type: string
+      type: object
+    saleItemUpdate:
+      properties:
+        description:
+          type: string
+        item_id:
+          format: uuid
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+        sale_id:
+          format: uuid
+          type: string
+      required:
+      - sale_id
+      - item_id
+      - quantity
+      - price
+      type: object
+    saleItemView:
+      properties:
+        description:
+          type: string
+        id:
+          format: uuid
+          type: string
+        item:
+          $ref: '#/components/schemas/itemView'
+        item_id:
+          format: uuid
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+        sale:
+          $ref: '#/components/schemas/saleView'
+        sale_id:
+          format: uuid
+          type: string
+      type: object
+    salePartial:
+      properties:
+        account_id:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        confirmed:
+          type: boolean
+        currency_id:
+          type: string
+        customer_id:
+          format: uuid
+          type: string
+        due_date:
+          format: date
+          type: string
+        place:
+          type: string
+        reference:
+          type: string
+        reference_date:
+          format: date
+          type: string
+      type: object
+    saleUpdate:
+      properties:
+        account_id:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        confirmed:
+          type: boolean
+        currency_id:
+          type: string
+        customer_id:
+          format: uuid
+          type: string
+        due_date:
+          format: date
+          type: string
+        place:
+          type: string
+        reference:
+          type: string
+        reference_date:
+          format: date
+          type: string
+      required:
+      - company_id
+      - account_id
+      - customer_id
+      - currency_id
+      - confirmed
+      type: object
+    saleView:
+      properties:
+        account:
+          $ref: '#/components/schemas/accountView'
+        account_id:
+          format: uuid
+          type: string
+        company:
+          $ref: '#/components/schemas/companyView'
+        company_id:
+          format: uuid
+          type: string
+        confirmed:
+          type: boolean
+        currency:
+          $ref: '#/components/schemas/currencyView'
+        currency_id:
+          type: string
+        customer:
+          $ref: '#/components/schemas/customerView'
+        customer_id:
+          format: uuid
+          type: string
+        date:
+          format: date
+          type: string
+        due_date:
+          format: date
+          type: string
+        id:
+          format: uuid
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/saleItemView'
+          type: array
+        number:
+          type: integer
+        place:
+          type: string
+        reference:
+          type: string
+        reference_date:
+          format: date
+          type: string
+        total:
+          type: number
+      type: object
+    user:
+      properties:
+        email:
+          format: email
+          type: string
+        id:
+          format: uuid
+          type: string
+        login_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      - email
+      - login_id
+      type: object
+    userCreate:
+      properties:
+        email:
+          format: email
+          type: string
+        login_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      - email
+      - login_id
+      type: object
+    userPartial:
+      properties:
+        email:
+          format: email
+          type: string
+        login_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+    userUpdate:
+      properties:
+        email:
+          format: email
+          type: string
+        login_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      - email
+      - login_id
+      type: object
+    userView:
+      properties:
+        email:
+          format: email
+          type: string
+        id:
+          format: uuid
+          type: string
+        login_id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+info:
+  description: Invoicing API Reference
+  title: Invoicing API
+  version: '1.0'
+openapi: 3.0.3
+paths:
+  /api/v1/accounts:
+    get:
+      description: get all account entities
+      operationId: getAccounts
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/accountView'
+                type: array
+          description: successful operation
+      summary: get all account entities
+      tags:
+      - account
+    post:
+      description: Add a new account entity
+      operationId: addAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accountCreate'
+        description: Create a new account entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new account entity
+      tags:
+      - account
+  /api/v1/accounts/{id}:
+    delete:
+      description: Delete an existing account entity
+      operationId: deleteAccount
+      parameters:
+      - description: account id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountView'
+          description: successful operation
+        '400':
+          description: Invalid account id
+        '404':
+          description: account not found
+      summary: Delete an existing account entity
+      tags:
+      - account
+    get:
+      description: Get an existing account entity
+      operationId: getAccount
+      parameters:
+      - description: account id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountView'
+          description: successful operation
+        '400':
+          description: Invalid account id
+        '404':
+          description: account not found
+      summary: Get an existing account entity
+      tags:
+      - account
+    patch:
+      description: Modify an existing account entity (partial update, only provided
+        properties will be updated)
+      operationId: modifyAccount
+      parameters:
+      - description: account id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accountPartial'
+        description: Modify an existing account entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: account not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing account entity
+      tags:
+      - account
+    put:
+      description: Update an existing account entity (all required properties must
+        be supplied)
+      operationId: updateAccount
+      parameters:
+      - description: account id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accountUpdate'
+        description: Update an existing account entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accountView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: account not found
+        '405':
+          description: Invalid input
+      summary: Update an existing account entity
+      tags:
+      - account
+  /api/v1/categories:
+    get:
+      description: get all category entities
+      operationId: getCategories
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/categoryView'
+                type: array
+          description: successful operation
+      summary: get all category entities
+      tags:
+      - category
+    post:
+      description: Add a new category entity
+      operationId: addCategory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/categoryCreate'
+        description: Create a new category entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categoryView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new category entity
+      tags:
+      - category
+  /api/v1/categories/{id}:
+    delete:
+      description: Delete an existing category entity
+      operationId: deleteCategory
+      parameters:
+      - description: category id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categoryView'
+          description: successful operation
+        '400':
+          description: Invalid category id
+        '404':
+          description: category not found
+      summary: Delete an existing category entity
+      tags:
+      - category
+    get:
+      description: Get an existing category entity
+      operationId: getCategory
+      parameters:
+      - description: category id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categoryView'
+          description: successful operation
+        '400':
+          description: Invalid category id
+        '404':
+          description: category not found
+      summary: Get an existing category entity
+      tags:
+      - category
+    patch:
+      description: Modify an existing category entity (partial update, only provided
+        properties will be updated)
+      operationId: modifyCategory
+      parameters:
+      - description: category id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/categoryPartial'
+        description: Modify an existing category entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categoryView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: category not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing category entity
+      tags:
+      - category
+    put:
+      description: Update an existing category entity (all required properties must
+        be supplied)
+      operationId: updateCategory
+      parameters:
+      - description: category id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/categoryUpdate'
+        description: Update an existing category entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categoryView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: category not found
+        '405':
+          description: Invalid input
+      summary: Update an existing category entity
+      tags:
+      - category
+  /api/v1/companies:
+    get:
+      description: get all company entities
+      operationId: getCompanies
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/companyView'
+                type: array
+          description: successful operation
+      summary: get all company entities
+      tags:
+      - company
+    post:
+      description: Add a new company entity
+      operationId: addCompany
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/companyCreate'
+        description: Create a new company entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/companyView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new company entity
+      tags:
+      - company
+  /api/v1/companies/{id}:
+    delete:
+      description: Delete an existing company entity
+      operationId: deleteCompany
+      parameters:
+      - description: company id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/companyView'
+          description: successful operation
+        '400':
+          description: Invalid company id
+        '404':
+          description: company not found
+      summary: Delete an existing company entity
+      tags:
+      - company
+    get:
+      description: Get an existing company entity
+      operationId: getCompany
+      parameters:
+      - description: company id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/companyView'
+          description: successful operation
+        '400':
+          description: Invalid company id
+        '404':
+          description: company not found
+      summary: Get an existing company entity
+      tags:
+      - company
+    patch:
+      description: Modify an existing company entity (partial update, only provided
+        properties will be updated)
+      operationId: modifyCompany
+      parameters:
+      - description: company id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/companyPartial'
+        description: Modify an existing company entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/companyView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: company not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing company entity
+      tags:
+      - company
+    put:
+      description: Update an existing company entity (all required properties must
+        be supplied)
+      operationId: updateCompany
+      parameters:
+      - description: company id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/companyUpdate'
+        description: Update an existing company entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/companyView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: company not found
+        '405':
+          description: Invalid input
+      summary: Update an existing company entity
+      tags:
+      - company
+  /api/v1/currencies:
+    get:
+      description: get all currency entities
+      operationId: getCurrencies
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/currencyView'
+                type: array
+          description: successful operation
+      summary: get all currency entities
+      tags:
+      - currency
+    post:
+      description: Add a new currency entity
+      operationId: addCurrency
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/currencyCreate'
+        description: Create a new currency entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/currencyView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new currency entity
+      tags:
+      - currency
+  /api/v1/currencies/{id}:
+    delete:
+      description: Delete an existing currency entity
+      operationId: deleteCurrency
+      parameters:
+      - description: currency id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/currencyView'
+          description: successful operation
+        '400':
+          description: Invalid currency id
+        '404':
+          description: currency not found
+      summary: Delete an existing currency entity
+      tags:
+      - currency
+    get:
+      description: Get an existing currency entity
+      operationId: getCurrency
+      parameters:
+      - description: currency id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/currencyView'
+          description: successful operation
+        '400':
+          description: Invalid currency id
+        '404':
+          description: currency not found
+      summary: Get an existing currency entity
+      tags:
+      - currency
+    patch:
+      description: Modify an existing currency entity (partial update, only provided
+        properties will be updated)
+      operationId: modifyCurrency
+      parameters:
+      - description: currency id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/currencyPartial'
+        description: Modify an existing currency entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/currencyView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: currency not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing currency entity
+      tags:
+      - currency
+    put:
+      description: Update an existing currency entity (all required properties must
+        be supplied)
+      operationId: updateCurrency
+      parameters:
+      - description: currency id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/currencyUpdate'
+        description: Update an existing currency entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/currencyView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: currency not found
+        '405':
+          description: Invalid input
+      summary: Update an existing currency entity
+      tags:
+      - currency
+  /api/v1/customers:
+    get:
+      description: get all customer entities
+      operationId: getCustomers
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/customerView'
+                type: array
+          description: successful operation
+      summary: get all customer entities
+      tags:
+      - customer
+    post:
+      description: Add a new customer entity
+      operationId: addCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerCreate'
+        description: Create a new customer entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new customer entity
+      tags:
+      - customer
+  /api/v1/customers/{id}:
+    delete:
+      description: Delete an existing customer entity
+      operationId: deleteCustomer
+      parameters:
+      - description: customer id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerView'
+          description: successful operation
+        '400':
+          description: Invalid customer id
+        '404':
+          description: customer not found
+      summary: Delete an existing customer entity
+      tags:
+      - customer
+    get:
+      description: Get an existing customer entity
+      operationId: getCustomer
+      parameters:
+      - description: customer id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerView'
+          description: successful operation
+        '400':
+          description: Invalid customer id
+        '404':
+          description: customer not found
+      summary: Get an existing customer entity
+      tags:
+      - customer
+    patch:
+      description: Modify an existing customer entity (partial update, only provided
+        properties will be updated)
+      operationId: modifyCustomer
+      parameters:
+      - description: customer id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerPartial'
+        description: Modify an existing customer entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: customer not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing customer entity
+      tags:
+      - customer
+    put:
+      description: Update an existing customer entity (all required properties must
+        be supplied)
+      operationId: updateCustomer
+      parameters:
+      - description: customer id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUpdate'
+        description: Update an existing customer entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: customer not found
+        '405':
+          description: Invalid input
+      summary: Update an existing customer entity
+      tags:
+      - customer
+  /api/v1/items:
+    get:
+      description: get all item entities
+      operationId: getItems
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/itemView'
+                type: array
+          description: successful operation
+      summary: get all item entities
+      tags:
+      - item
+    post:
+      description: Add a new item entity
+      operationId: addItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/itemCreate'
+        description: Create a new item entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/itemView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new item entity
+      tags:
+      - item
+  /api/v1/items/{id}:
+    delete:
+      description: Delete an existing item entity
+      operationId: deleteItem
+      parameters:
+      - description: item id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/itemView'
+          description: successful operation
+        '400':
+          description: Invalid item id
+        '404':
+          description: item not found
+      summary: Delete an existing item entity
+      tags:
+      - item
+    get:
+      description: Get an existing item entity
+      operationId: getItem
+      parameters:
+      - description: item id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/itemView'
+          description: successful operation
+        '400':
+          description: Invalid item id
+        '404':
+          description: item not found
+      summary: Get an existing item entity
+      tags:
+      - item
+    patch:
+      description: Modify an existing item entity (partial update, only provided properties
+        will be updated)
+      operationId: modifyItem
+      parameters:
+      - description: item id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/itemPartial'
+        description: Modify an existing item entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/itemView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: item not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing item entity
+      tags:
+      - item
+    put:
+      description: Update an existing item entity (all required properties must be
+        supplied)
+      operationId: updateItem
+      parameters:
+      - description: item id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/itemUpdate'
+        description: Update an existing item entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/itemView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: item not found
+        '405':
+          description: Invalid input
+      summary: Update an existing item entity
+      tags:
+      - item
+  /api/v1/logins:
+    get:
+      description: get all login entities
+      operationId: getLogins
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/loginView'
+                type: array
+          description: successful operation
+      summary: get all login entities
+      tags:
+      - login
+    post:
+      description: Add a new login entity
+      operationId: addLogin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginCreate'
+        description: Create a new login entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new login entity
+      tags:
+      - login
+  /api/v1/logins/{id}:
+    delete:
+      description: Delete an existing login entity
+      operationId: deleteLogin
+      parameters:
+      - description: login id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginView'
+          description: successful operation
+        '400':
+          description: Invalid login id
+        '404':
+          description: login not found
+      summary: Delete an existing login entity
+      tags:
+      - login
+    get:
+      description: Get an existing login entity
+      operationId: getLogin
+      parameters:
+      - description: login id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginView'
+          description: successful operation
+        '400':
+          description: Invalid login id
+        '404':
+          description: login not found
+      summary: Get an existing login entity
+      tags:
+      - login
+    patch:
+      description: Modify an existing login entity (partial update, only provided
+        properties will be updated)
+      operationId: modifyLogin
+      parameters:
+      - description: login id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginPartial'
+        description: Modify an existing login entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: login not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing login entity
+      tags:
+      - login
+    put:
+      description: Update an existing login entity (all required properties must be
+        supplied)
+      operationId: updateLogin
+      parameters:
+      - description: login id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginUpdate'
+        description: Update an existing login entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: login not found
+        '405':
+          description: Invalid input
+      summary: Update an existing login entity
+      tags:
+      - login
+  /api/v1/permissions:
+    get:
+      description: get all permission entities
+      operationId: getPermissions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/permissionView'
+                type: array
+          description: successful operation
+      summary: get all permission entities
+      tags:
+      - permission
+    post:
+      description: Add a new permission entity
+      operationId: addPermission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/permissionCreate'
+        description: Create a new permission entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/permissionView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new permission entity
+      tags:
+      - permission
+  /api/v1/permissions/{id}:
+    delete:
+      description: Delete an existing permission entity
+      operationId: deletePermission
+      parameters:
+      - description: permission id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/permissionView'
+          description: successful operation
+        '400':
+          description: Invalid permission id
+        '404':
+          description: permission not found
+      summary: Delete an existing permission entity
+      tags:
+      - permission
+    get:
+      description: Get an existing permission entity
+      operationId: getPermission
+      parameters:
+      - description: permission id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/permissionView'
+          description: successful operation
+        '400':
+          description: Invalid permission id
+        '404':
+          description: permission not found
+      summary: Get an existing permission entity
+      tags:
+      - permission
+    patch:
+      description: Modify an existing permission entity (partial update, only provided
+        properties will be updated)
+      operationId: modifyPermission
+      parameters:
+      - description: permission id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/permissionPartial'
+        description: Modify an existing permission entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/permissionView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: permission not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing permission entity
+      tags:
+      - permission
+    put:
+      description: Update an existing permission entity (all required properties must
+        be supplied)
+      operationId: updatePermission
+      parameters:
+      - description: permission id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/permissionUpdate'
+        description: Update an existing permission entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/permissionView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: permission not found
+        '405':
+          description: Invalid input
+      summary: Update an existing permission entity
+      tags:
+      - permission
+  /api/v1/rolePermissions:
+    get:
+      description: get all rolePermission entities
+      operationId: getRolepermissions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/rolePermissionView'
+                type: array
+          description: successful operation
+      summary: get all rolePermission entities
+      tags:
+      - rolePermission
+    post:
+      description: Add a new rolePermission entity
+      operationId: addRolepermission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rolePermissionCreate'
+        description: Create a new rolePermission entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rolePermissionView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new rolePermission entity
+      tags:
+      - rolePermission
+  /api/v1/rolePermissions/{id}:
+    delete:
+      description: Delete an existing rolePermission entity
+      operationId: deleteRolepermission
+      parameters:
+      - description: rolePermission id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rolePermissionView'
+          description: successful operation
+        '400':
+          description: Invalid rolePermission id
+        '404':
+          description: rolePermission not found
+      summary: Delete an existing rolePermission entity
+      tags:
+      - rolePermission
+    get:
+      description: Get an existing rolePermission entity
+      operationId: getRolepermission
+      parameters:
+      - description: rolePermission id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rolePermissionView'
+          description: successful operation
+        '400':
+          description: Invalid rolePermission id
+        '404':
+          description: rolePermission not found
+      summary: Get an existing rolePermission entity
+      tags:
+      - rolePermission
+    patch:
+      description: Modify an existing rolePermission entity (partial update, only
+        provided properties will be updated)
+      operationId: modifyRolepermission
+      parameters:
+      - description: rolePermission id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rolePermissionPartial'
+        description: Modify an existing rolePermission entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rolePermissionView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: rolePermission not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing rolePermission entity
+      tags:
+      - rolePermission
+    put:
+      description: Update an existing rolePermission entity (all required properties
+        must be supplied)
+      operationId: updateRolepermission
+      parameters:
+      - description: rolePermission id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rolePermissionUpdate'
+        description: Update an existing rolePermission entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rolePermissionView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: rolePermission not found
+        '405':
+          description: Invalid input
+      summary: Update an existing rolePermission entity
+      tags:
+      - rolePermission
+  /api/v1/roles:
+    get:
+      description: get all role entities
+      operationId: getRoles
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/roleView'
+                type: array
+          description: successful operation
+      summary: get all role entities
+      tags:
+      - role
+    post:
+      description: Add a new role entity
+      operationId: addRole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/roleCreate'
+        description: Create a new role entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/roleView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new role entity
+      tags:
+      - role
+  /api/v1/roles/{id}:
+    delete:
+      description: Delete an existing role entity
+      operationId: deleteRole
+      parameters:
+      - description: role id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/roleView'
+          description: successful operation
+        '400':
+          description: Invalid role id
+        '404':
+          description: role not found
+      summary: Delete an existing role entity
+      tags:
+      - role
+    get:
+      description: Get an existing role entity
+      operationId: getRole
+      parameters:
+      - description: role id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/roleView'
+          description: successful operation
+        '400':
+          description: Invalid role id
+        '404':
+          description: role not found
+      summary: Get an existing role entity
+      tags:
+      - role
+    patch:
+      description: Modify an existing role entity (partial update, only provided properties
+        will be updated)
+      operationId: modifyRole
+      parameters:
+      - description: role id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rolePartial'
+        description: Modify an existing role entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/roleView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: role not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing role entity
+      tags:
+      - role
+    put:
+      description: Update an existing role entity (all required properties must be
+        supplied)
+      operationId: updateRole
+      parameters:
+      - description: role id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/roleUpdate'
+        description: Update an existing role entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/roleView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: role not found
+        '405':
+          description: Invalid input
+      summary: Update an existing role entity
+      tags:
+      - role
+  /api/v1/saleItems:
+    get:
+      description: get all saleItem entities
+      operationId: getSaleitems
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/saleItemView'
+                type: array
+          description: successful operation
+      summary: get all saleItem entities
+      tags:
+      - saleItem
+    post:
+      description: Add a new saleItem entity
+      operationId: addSaleitem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/saleItemCreate'
+        description: Create a new saleItem entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleItemView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new saleItem entity
+      tags:
+      - saleItem
+  /api/v1/saleItems/{id}:
+    delete:
+      description: Delete an existing saleItem entity
+      operationId: deleteSaleitem
+      parameters:
+      - description: saleItem id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleItemView'
+          description: successful operation
+        '400':
+          description: Invalid saleItem id
+        '404':
+          description: saleItem not found
+      summary: Delete an existing saleItem entity
+      tags:
+      - saleItem
+    get:
+      description: Get an existing saleItem entity
+      operationId: getSaleitem
+      parameters:
+      - description: saleItem id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleItemView'
+          description: successful operation
+        '400':
+          description: Invalid saleItem id
+        '404':
+          description: saleItem not found
+      summary: Get an existing saleItem entity
+      tags:
+      - saleItem
+    patch:
+      description: Modify an existing saleItem entity (partial update, only provided
+        properties will be updated)
+      operationId: modifySaleitem
+      parameters:
+      - description: saleItem id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/saleItemPartial'
+        description: Modify an existing saleItem entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleItemView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: saleItem not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing saleItem entity
+      tags:
+      - saleItem
+    put:
+      description: Update an existing saleItem entity (all required properties must
+        be supplied)
+      operationId: updateSaleitem
+      parameters:
+      - description: saleItem id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/saleItemUpdate'
+        description: Update an existing saleItem entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleItemView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: saleItem not found
+        '405':
+          description: Invalid input
+      summary: Update an existing saleItem entity
+      tags:
+      - saleItem
+  /api/v1/sales:
+    get:
+      description: get all sale entities
+      operationId: getSales
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/saleView'
+                type: array
+          description: successful operation
+      summary: get all sale entities
+      tags:
+      - sale
+    post:
+      description: Add a new sale entity
+      operationId: addSale
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/saleCreate'
+        description: Create a new sale entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new sale entity
+      tags:
+      - sale
+  /api/v1/sales/{id}:
+    delete:
+      description: Delete an existing sale entity
+      operationId: deleteSale
+      parameters:
+      - description: sale id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleView'
+          description: successful operation
+        '400':
+          description: Invalid sale id
+        '404':
+          description: sale not found
+      summary: Delete an existing sale entity
+      tags:
+      - sale
+    get:
+      description: Get an existing sale entity
+      operationId: getSale
+      parameters:
+      - description: sale id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleView'
+          description: successful operation
+        '400':
+          description: Invalid sale id
+        '404':
+          description: sale not found
+      summary: Get an existing sale entity
+      tags:
+      - sale
+    patch:
+      description: Modify an existing sale entity (partial update, only provided properties
+        will be updated)
+      operationId: modifySale
+      parameters:
+      - description: sale id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/salePartial'
+        description: Modify an existing sale entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: sale not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing sale entity
+      tags:
+      - sale
+    put:
+      description: Update an existing sale entity (all required properties must be
+        supplied)
+      operationId: updateSale
+      parameters:
+      - description: sale id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/saleUpdate'
+        description: Update an existing sale entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/saleView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: sale not found
+        '405':
+          description: Invalid input
+      summary: Update an existing sale entity
+      tags:
+      - sale
+  /api/v1/users:
+    get:
+      description: get all user entities
+      operationId: getUsers
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/userView'
+                type: array
+          description: successful operation
+      summary: get all user entities
+      tags:
+      - user
+    post:
+      description: Add a new user entity
+      operationId: addUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userCreate'
+        description: Create a new user entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userView'
+          description: successful operation
+        '405':
+          description: invalid input
+      summary: Add a new user entity
+      tags:
+      - user
+  /api/v1/users/{id}:
+    delete:
+      description: Delete an existing user entity
+      operationId: deleteUser
+      parameters:
+      - description: user id to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userView'
+          description: successful operation
+        '400':
+          description: Invalid user id
+        '404':
+          description: user not found
+      summary: Delete an existing user entity
+      tags:
+      - user
+    get:
+      description: Get an existing user entity
+      operationId: getUser
+      parameters:
+      - description: user id to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userView'
+          description: successful operation
+        '400':
+          description: Invalid user id
+        '404':
+          description: user not found
+      summary: Get an existing user entity
+      tags:
+      - user
+    patch:
+      description: Modify an existing user entity (partial update, only provided properties
+        will be updated)
+      operationId: modifyUser
+      parameters:
+      - description: user id to partially update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userPartial'
+        description: Modify an existing user entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: user not found
+        '405':
+          description: Invalid input
+      summary: Modify an existing user entity
+      tags:
+      - user
+    put:
+      description: Update an existing user entity (all required properties must be
+        supplied)
+      operationId: updateUser
+      parameters:
+      - description: user id to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userUpdate'
+        description: Update an existing user entity
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userView'
+          description: successful operation
+        '400':
+          description: Invalid ID
+        '404':
+          description: user not found
+        '405':
+          description: Invalid input
+      summary: Update an existing user entity
+      tags:
+      - user
+servers:
+- url: http://localhost:8001
+tags:
+- description: login Entities
+  name: login
+- description: user Entities
+  name: user
+- description: role Entities
+  name: role
+- description: permission Entities
+  name: permission
+- description: rolePermission Entities
+  name: rolePermission
+- description: account Entities
+  name: account
+- description: category Entities
+  name: category
+- description: company Entities
+  name: company
+- description: currency Entities
+  name: currency
+- description: customer Entities
+  name: customer
+- description: item Entities
+  name: item
+- description: sale Entities
+  name: sale
+- description: saleItem Entities
+  name: saleItem
