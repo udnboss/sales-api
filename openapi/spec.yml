@@ -549,6 +549,10 @@ components:
       type: object
     permission:
       properties:
+        action:
+          type: string
+        entity:
+          type: string
         id:
           type: string
         name:
@@ -556,9 +560,15 @@ components:
       required:
       - id
       - name
+      - entity
+      - action
       type: object
     permissionCreate:
       properties:
+        action:
+          type: string
+        entity:
+          type: string
         id:
           type: string
         name:
@@ -566,9 +576,15 @@ components:
       required:
       - id
       - name
+      - entity
+      - action
       type: object
     permissionPartial:
       properties:
+        action:
+          type: string
+        entity:
+          type: string
         id:
           type: string
         name:
@@ -576,6 +592,10 @@ components:
       type: object
     permissionUpdate:
       properties:
+        action:
+          type: string
+        entity:
+          type: string
         id:
           type: string
         name:
@@ -583,9 +603,15 @@ components:
       required:
       - id
       - name
+      - entity
+      - action
       type: object
     permissionView:
       properties:
+        action:
+          type: string
+        entity:
+          type: string
         id:
           type: string
         name:
@@ -675,8 +701,12 @@ components:
         id:
           format: uuid
           type: string
+        permission:
+          $ref: '#/components/schemas/permissionView'
         permission_id:
           type: string
+        role:
+          $ref: '#/components/schemas/roleView'
         role_id:
           type: string
       type: object
@@ -1050,18 +1080,89 @@ components:
         id:
           format: uuid
           type: string
+        login:
+          $ref: '#/components/schemas/loginView'
         login_id:
           format: uuid
           type: string
         name:
           type: string
       type: object
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      type: http
+    key:
+      in: header
+      name: X-API-Key
+      type: apiKey
+    oauth:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          scopes:
+            admin: Grants access to admin operations
+            read: Grants read access
+            write: Grants write access
+          tokenUrl: https://example.com/oauth/token
+      type: oauth2
 info:
   description: Invoicing API Reference
   title: Invoicing API
   version: '1.0'
 openapi: 3.0.3
 paths:
+  /:
+    get:
+      description: Obtain CSRF cookie
+      operationId: home
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    type: boolean
+      summary: home
+  /login:
+    post:
+      description: perform a login attempt
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                  default: test
+                password:
+                  type: string
+                  default: skgjhsdgklj
+        description: Perform a login attempt
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  username:
+                    type: string
+                  accessToken:
+                    type: string
+                  refreshToken:
+                    type: string
+          description: successful operation
+        '400':
+          description: bad request
+        '403':
+          description: invalid username or password
+        '405':
+          description: invalid input
+      summary: Perform a login attempt
   /api/v1/accounts:
     get:
       description: get all account entities
@@ -3077,6 +3178,12 @@ paths:
       summary: Update an existing user entity
       tags:
       - user
+security:
+- bearer: []
+- key: []
+- oauth:
+  - read
+  - write
 servers:
 - url: http://localhost:8001
 tags:

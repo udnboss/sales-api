@@ -1,6 +1,6 @@
 import express from 'express';
 import { MessageResponse } from './base';
-
+import * as middlewares from '../middlewares';
 import { loginRouter } from './loginRoute';
 import { userRouter } from './userRoute';
 import { roleRouter } from './roleRoute';
@@ -16,6 +16,7 @@ import { saleRouter } from './saleRoute';
 import { saleItemRouter } from './saleItemRoute';
 
 const indexRouter = express.Router();
+indexRouter.use(middlewares.authenticate);
 
 indexRouter.use('/logins', loginRouter);
 indexRouter.use('/users', userRouter);
