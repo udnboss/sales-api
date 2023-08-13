@@ -1,8 +1,11 @@
 
 //import { Customer, CustomerCreate, CustomerUpdate, CustomerPartial, CustomerView } from "./customerClasses"
 import { ICustomerCreate, ICustomerUpdate, ICustomerPartial, ICustomerView } from "./customerInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+import { CurrencyBusiness } from "./currencyBusiness";
+import { SaleBusiness } from "./saleBusiness";
 
 export class CustomerBusiness extends Business<ICustomerView> {
 
@@ -77,8 +80,8 @@ export class CustomerBusiness extends Business<ICustomerView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, ICustomerView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, ICustomerView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ICustomerView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ICustomerView>>;
     }
 
     override async create(customer:ICustomerCreate):Promise<ICustomerView> {        
@@ -89,7 +92,13 @@ export class CustomerBusiness extends Business<ICustomerView> {
     }
 
     override async getById(id:string):Promise<ICustomerView> {
-        return super.getById(id) as any;    
+        const customer = await super.getById(id);
+
+        if (customer.currency) { customer.currency = await new CurrencyBusiness(this.context).getById(customer.currency_id); }
+
+        customer.sales = (await new SaleBusiness(this.context).getAll([ { column: 'customer_id', operator: Operator.Equals, value: customer.id } as ICondition])).result;
+
+        return customer;    
     }
 
     override async update(id:string, customer:ICustomerUpdate):Promise<ICustomerView> {

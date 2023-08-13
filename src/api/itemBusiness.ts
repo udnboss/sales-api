@@ -1,8 +1,10 @@
 
 //import { Item, ItemCreate, ItemUpdate, ItemPartial, ItemView } from "./itemClasses"
 import { IItemCreate, IItemUpdate, IItemPartial, IItemView } from "./itemInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+import { CategoryBusiness } from "./categoryBusiness";
 
 export class ItemBusiness extends Business<IItemView> {
 
@@ -41,8 +43,8 @@ export class ItemBusiness extends Business<IItemView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, IItemView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, IItemView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, IItemView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, IItemView>>;
     }
 
     override async create(item:IItemCreate):Promise<IItemView> {        
@@ -53,7 +55,13 @@ export class ItemBusiness extends Business<IItemView> {
     }
 
     override async getById(id:string):Promise<IItemView> {
-        return super.getById(id) as any;    
+        const item = await super.getById(id);
+
+        if (item.category) { item.category = await new CategoryBusiness(this.context).getById(item.category_id); }
+
+        
+
+        return item;    
     }
 
     override async update(id:string, item:IItemUpdate):Promise<IItemView> {

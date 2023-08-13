@@ -616,6 +616,10 @@ components:
           type: string
         name:
           type: string
+        roles:
+          items:
+            $ref: '#/components/schemas/rolePermissionView'
+          type: array
       type: object
     role:
       properties:
@@ -726,6 +730,10 @@ components:
           type: string
         name:
           type: string
+        rolePermissions:
+          items:
+            $ref: '#/components/schemas/rolePermissionView'
+          type: array
       type: object
     sale:
       properties:
@@ -766,8 +774,8 @@ components:
       - company_id
       - account_id
       - customer_id
-      - date
       - currency_id
+      - date
       - total
       - confirmed
       type: object
@@ -803,8 +811,8 @@ components:
       - company_id
       - account_id
       - customer_id
-      - date
       - currency_id
+      - date
       - confirmed
       type: object
     saleItem:
@@ -1092,6 +1100,14 @@ components:
     bearer:
       scheme: bearer
       type: http
+    cookieAccessToken:
+      in: cookie
+      name: x-access-token
+      type: apiKey
+    cookieRefreshToken:
+      in: cookie
+      name: x-refresh-token
+      type: apiKey
     key:
       in: header
       name: X-API-Key
@@ -1118,51 +1134,14 @@ paths:
       operationId: home
       responses:
         '200':
-          description: successful operation
           content:
             application/json:
               schema:
                 properties:
                   success:
                     type: boolean
-      summary: home
-  /login:
-    post:
-      description: perform a login attempt
-      operationId: login
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                email:
-                  type: string
-                  default: test
-                password:
-                  type: string
-                  default: skgjhsdgklj
-        description: Perform a login attempt
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  username:
-                    type: string
-                  accessToken:
-                    type: string
-                  refreshToken:
-                    type: string
           description: successful operation
-        '400':
-          description: bad request
-        '403':
-          description: invalid username or password
-        '405':
-          description: invalid input
-      summary: Perform a login attempt
+      summary: home
   /api/v1/accounts:
     get:
       description: get all account entities
@@ -3178,12 +3157,46 @@ paths:
       summary: Update an existing user entity
       tags:
       - user
+  /login:
+    post:
+      description: perform a login attempt
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  default: test
+                  type: string
+                password:
+                  default: skgjhsdgklj
+                  type: string
+        description: Perform a login attempt
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  accessToken:
+                    type: string
+                  refreshToken:
+                    type: string
+                  username:
+                    type: string
+          description: successful operation
+        '400':
+          description: bad request
+        '403':
+          description: invalid username or password
+        '405':
+          description: invalid input
+      summary: Perform a login attempt
 security:
-- bearer: []
-- key: []
-- oauth:
-  - read
-  - write
+- cookieAccessToken: []
+  cookieRefreshToken: []
 servers:
 - url: http://localhost:8001
 tags:

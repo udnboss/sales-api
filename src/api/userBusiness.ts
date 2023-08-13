@@ -1,8 +1,10 @@
 
 //import { User, UserCreate, UserUpdate, UserPartial, UserView } from "./userClasses"
 import { IUserCreate, IUserUpdate, IUserPartial, IUserView } from "./userInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+import { LoginBusiness } from "./loginBusiness";
 
 export class UserBusiness extends Business<IUserView> {
 
@@ -53,8 +55,8 @@ export class UserBusiness extends Business<IUserView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, IUserView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, IUserView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, IUserView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, IUserView>>;
     }
 
     override async create(user:IUserCreate):Promise<IUserView> {        
@@ -65,7 +67,13 @@ export class UserBusiness extends Business<IUserView> {
     }
 
     override async getById(id:string):Promise<IUserView> {
-        return super.getById(id) as any;    
+        const user = await super.getById(id);
+
+        if (user.login) { user.login = await new LoginBusiness(this.context).getById(user.login_id); }
+
+        
+
+        return user;    
     }
 
     override async update(id:string, user:IUserUpdate):Promise<IUserView> {

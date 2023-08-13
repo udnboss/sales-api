@@ -1,6 +1,6 @@
 import { IEntity } from "./base";
 
-import { IItemView } from "./itemInterfaces";
+import { IItem } from "./itemInterfaces";
 
 export interface ICategory extends IEntity {
     name:string;

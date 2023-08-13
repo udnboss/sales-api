@@ -75,7 +75,7 @@ export abstract class Business<TOutput extends IEntity> implements IBusiness<TOu
     updateProperties: { id: { type: "string", required: true } };
     partialProperties: { id: { type: "string", required: false } };
     private db: IDBProvider;
-    private context: Context;
+    context: Context;
     entityName: string;
 
     constructor(context: Context, entityName: string) {
@@ -147,8 +147,8 @@ export abstract class Business<TOutput extends IEntity> implements IBusiness<TOu
         return this.implementsInterface(obj, this.partialProperties);
     }
 
-    async getAll(): Promise<IQueryResult<IQuery, TOutput>> {
-        return this.db.dbSelect(this.entityName) as Promise<IQueryResult<IQuery, TOutput>>;
+    async getAll(where:ICondition[] = [], sort:ISort[] = []): Promise<IQueryResult<IQuery, TOutput>> {
+        return this.db.dbSelect(this.entityName, where, sort) as Promise<IQueryResult<IQuery, TOutput>>;
     }
 
     async getById(id: string): Promise<TOutput> {

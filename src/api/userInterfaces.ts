@@ -1,6 +1,6 @@
 import { IEntity } from "./base";
 
-import { ILoginView } from "./loginInterfaces";
+import { ILogin } from "./loginInterfaces";
 
 export interface IUser extends IEntity {
     name:string;

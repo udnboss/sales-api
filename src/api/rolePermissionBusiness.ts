@@ -1,8 +1,11 @@
 
 //import { Rolepermission, RolepermissionCreate, RolepermissionUpdate, RolepermissionPartial, RolepermissionView } from "./rolePermissionClasses"
 import { IRolepermissionCreate, IRolepermissionUpdate, IRolepermissionPartial, IRolepermissionView } from "./rolePermissionInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+import { PermissionBusiness } from "./permissionBusiness";
+import { RoleBusiness } from "./roleBusiness";
 
 export class RolepermissionBusiness extends Business<IRolepermissionView> {
 
@@ -53,8 +56,8 @@ export class RolepermissionBusiness extends Business<IRolepermissionView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, IRolepermissionView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, IRolepermissionView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, IRolepermissionView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, IRolepermissionView>>;
     }
 
     override async create(rolePermission:IRolepermissionCreate):Promise<IRolepermissionView> {        
@@ -65,7 +68,15 @@ export class RolepermissionBusiness extends Business<IRolepermissionView> {
     }
 
     override async getById(id:string):Promise<IRolepermissionView> {
-        return super.getById(id) as any;    
+        const rolePermission = await super.getById(id);
+
+        if (rolePermission.role) { rolePermission.role = await new RoleBusiness(this.context).getById(rolePermission.role_id); }
+
+        if (rolePermission.permission) { rolePermission.permission = await new PermissionBusiness(this.context).getById(rolePermission.permission_id); }
+
+        
+
+        return rolePermission;    
     }
 
     override async update(id:string, rolePermission:IRolepermissionUpdate):Promise<IRolepermissionView> {

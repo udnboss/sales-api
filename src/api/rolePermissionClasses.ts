@@ -1,7 +1,7 @@
 import { Entity } from "./base";
 
-import { RoleView } from "./roleClasses";
-import { PermissionView } from "./permissionClasses";
+import { Permission } from "./permissionClasses";
+import { Role } from "./roleClasses";
 
 export class Rolepermission extends Entity {
     role_id:string;

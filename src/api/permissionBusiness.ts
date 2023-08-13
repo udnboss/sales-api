@@ -1,8 +1,10 @@
 
 //import { Permission, PermissionCreate, PermissionUpdate, PermissionPartial, PermissionView } from "./permissionClasses"
 import { IPermissionCreate, IPermissionUpdate, IPermissionPartial, IPermissionView } from "./permissionInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+import { RolepermissionBusiness } from "./rolePermissionBusiness";
 
 export class PermissionBusiness extends Business<IPermissionView> {
 
@@ -65,8 +67,8 @@ export class PermissionBusiness extends Business<IPermissionView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, IPermissionView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, IPermissionView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, IPermissionView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, IPermissionView>>;
     }
 
     override async create(permission:IPermissionCreate):Promise<IPermissionView> {        
@@ -77,7 +79,13 @@ export class PermissionBusiness extends Business<IPermissionView> {
     }
 
     override async getById(id:string):Promise<IPermissionView> {
-        return super.getById(id) as any;    
+        const permission = await super.getById(id);
+
+        
+
+        permission.roles = (await new RolepermissionBusiness(this.context).getAll([ { column: 'permission_id', operator: Operator.Equals, value: permission.id } as ICondition])).result;
+
+        return permission;    
     }
 
     override async update(id:string, permission:IPermissionUpdate):Promise<IPermissionView> {

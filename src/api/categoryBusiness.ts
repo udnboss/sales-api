@@ -1,8 +1,10 @@
 
 //import { Category, CategoryCreate, CategoryUpdate, CategoryPartial, CategoryView } from "./categoryClasses"
 import { ICategoryCreate, ICategoryUpdate, ICategoryPartial, ICategoryView } from "./categoryInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+import { ItemBusiness } from "./itemBusiness";
 
 export class CategoryBusiness extends Business<ICategoryView> {
 
@@ -41,8 +43,8 @@ export class CategoryBusiness extends Business<ICategoryView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, ICategoryView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, ICategoryView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ICategoryView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ICategoryView>>;
     }
 
     override async create(category:ICategoryCreate):Promise<ICategoryView> {        
@@ -53,7 +55,13 @@ export class CategoryBusiness extends Business<ICategoryView> {
     }
 
     override async getById(id:string):Promise<ICategoryView> {
-        return super.getById(id) as any;    
+        const category = await super.getById(id);
+
+        if (category.category) { category.category = await new CategoryBusiness(this.context).getById(category.category_id); }
+
+        category.items = (await new ItemBusiness(this.context).getAll([ { column: 'category_id', operator: Operator.Equals, value: category.id } as ICondition])).result;
+
+        return category;    
     }
 
     override async update(id:string, category:ICategoryUpdate):Promise<ICategoryView> {

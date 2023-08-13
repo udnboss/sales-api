@@ -1,6 +1,6 @@
 import { Entity } from "./base";
 
-import { LoginView } from "./loginClasses";
+import { Login } from "./loginClasses";
 
 export class User extends Entity {
     name:string;

@@ -1,8 +1,11 @@
 
 //import { Saleitem, SaleitemCreate, SaleitemUpdate, SaleitemPartial, SaleitemView } from "./saleItemClasses"
 import { ISaleitemCreate, ISaleitemUpdate, ISaleitemPartial, ISaleitemView } from "./saleItemInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+import { ItemBusiness } from "./itemBusiness";
+import { SaleBusiness } from "./saleBusiness";
 
 export class SaleitemBusiness extends Business<ISaleitemView> {
 
@@ -77,8 +80,8 @@ export class SaleitemBusiness extends Business<ISaleitemView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, ISaleitemView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, ISaleitemView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ISaleitemView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ISaleitemView>>;
     }
 
     override async create(saleItem:ISaleitemCreate):Promise<ISaleitemView> {        
@@ -89,7 +92,15 @@ export class SaleitemBusiness extends Business<ISaleitemView> {
     }
 
     override async getById(id:string):Promise<ISaleitemView> {
-        return super.getById(id) as any;    
+        const saleItem = await super.getById(id);
+
+        if (saleItem.sale) { saleItem.sale = await new SaleBusiness(this.context).getById(saleItem.sale_id); }
+
+        if (saleItem.item) { saleItem.item = await new ItemBusiness(this.context).getById(saleItem.item_id); }
+
+        
+
+        return saleItem;    
     }
 
     override async update(id:string, saleItem:ISaleitemUpdate):Promise<ISaleitemView> {

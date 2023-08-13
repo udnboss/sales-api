@@ -1,7 +1,7 @@
 import { Entity } from "./base";
 
-import { SaleView } from "./saleClasses";
-import { ItemView } from "./itemClasses";
+import { Sale } from "./saleClasses";
+import { Item } from "./itemClasses";
 
 export class Saleitem extends Entity {
     sale_id:string;

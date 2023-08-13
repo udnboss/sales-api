@@ -1,6 +1,6 @@
 import { Entity } from "./base";
 
-import { ItemView } from "./itemClasses";
+import { Item } from "./itemClasses";
 
 export class Category extends Entity {
     name:string;

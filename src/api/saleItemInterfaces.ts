@@ -1,7 +1,7 @@
 import { IEntity } from "./base";
 
-import { ISaleView } from "./saleInterfaces";
-import { IItemView } from "./itemInterfaces";
+import { IItem } from "./itemInterfaces";
+import { ISale } from "./saleInterfaces";
 
 export interface ISaleitem extends IEntity {
     sale_id:string;

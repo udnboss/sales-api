@@ -1,8 +1,10 @@
 
 //import { Company, CompanyCreate, CompanyUpdate, CompanyPartial, CompanyView } from "./companyClasses"
 import { ICompanyCreate, ICompanyUpdate, ICompanyPartial, ICompanyView } from "./companyInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+
 
 export class CompanyBusiness extends Business<ICompanyView> {
 
@@ -101,8 +103,8 @@ export class CompanyBusiness extends Business<ICompanyView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, ICompanyView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, ICompanyView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ICompanyView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ICompanyView>>;
     }
 
     override async create(company:ICompanyCreate):Promise<ICompanyView> {        
@@ -113,7 +115,13 @@ export class CompanyBusiness extends Business<ICompanyView> {
     }
 
     override async getById(id:string):Promise<ICompanyView> {
-        return super.getById(id) as any;    
+        const company = await super.getById(id);
+
+        
+
+        
+
+        return company;    
     }
 
     override async update(id:string, company:ICompanyUpdate):Promise<ICompanyView> {

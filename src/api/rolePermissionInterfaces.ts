@@ -1,7 +1,7 @@
 import { IEntity } from "./base";
 
-import { IRoleView } from "./roleInterfaces";
-import { IPermissionView } from "./permissionInterfaces";
+import { IPermission } from "./permissionInterfaces";
+import { IRole } from "./roleInterfaces";
 
 export interface IRolepermission extends IEntity {
     role_id:string;

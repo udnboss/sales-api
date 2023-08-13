@@ -1,19 +1,19 @@
 import { Entity } from "./base";
 
-import { CurrencyView } from "./currencyClasses";
-import { CustomerView } from "./customerClasses";
-import { AccountView } from "./accountClasses";
-import { CompanyView } from "./companyClasses";
-import { SaleitemView } from "./saleItemClasses";
+import { Saleitem } from "./saleItemClasses";
+import { Account } from "./accountClasses";
+import { Company } from "./companyClasses";
+import { Currency } from "./currencyClasses";
+import { Customer } from "./customerClasses";
 
 export class Sale extends Entity {
     company_id:string;
     account_id:string;
     customer_id:string;
+    currency_id:string;
     place?:string;
     number?:number;
     date:string;
-    currency_id:string;
     total:number;
     reference?:string;
     confirmed:boolean;
@@ -25,9 +25,9 @@ export class SaleCreate extends Entity {
     company_id:string;
     account_id:string;
     customer_id:string;
+    currency_id:string;
     place?:string;
     date:string;
-    currency_id:string;
     reference?:string;
     confirmed:boolean;
     reference_date?:string;
@@ -38,8 +38,8 @@ export class SaleUpdate extends Entity {
     company_id:string;
     account_id:string;
     customer_id:string;
-    place?:string;
     currency_id:string;
+    place?:string;
     reference?:string;
     confirmed:boolean;
     reference_date?:string;
@@ -50,8 +50,8 @@ export class SalePartial extends Entity {
     company_id?:string;
     account_id?:string;
     customer_id?:string;
-    place?:string;
     currency_id?:string;
+    place?:string;
     reference?:string;
     confirmed?:boolean;
     reference_date?:string;
@@ -62,10 +62,10 @@ export class SaleView extends Entity {
     company_id?:string;
     account_id?:string;
     customer_id?:string;
+    currency_id?:string;
     place?:string;
     number?:number;
     date?:string;
-    currency_id?:string;
     total?:number;
     reference?:string;
     confirmed?:boolean;

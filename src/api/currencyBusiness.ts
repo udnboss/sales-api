@@ -1,8 +1,10 @@
 
 //import { Currency, CurrencyCreate, CurrencyUpdate, CurrencyPartial, CurrencyView } from "./currencyClasses"
 import { ICurrencyCreate, ICurrencyUpdate, ICurrencyPartial, ICurrencyView } from "./currencyInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+
 
 export class CurrencyBusiness extends Business<ICurrencyView> {
 
@@ -53,8 +55,8 @@ export class CurrencyBusiness extends Business<ICurrencyView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, ICurrencyView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, ICurrencyView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ICurrencyView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ICurrencyView>>;
     }
 
     override async create(currency:ICurrencyCreate):Promise<ICurrencyView> {        
@@ -65,7 +67,13 @@ export class CurrencyBusiness extends Business<ICurrencyView> {
     }
 
     override async getById(id:string):Promise<ICurrencyView> {
-        return super.getById(id) as any;    
+        const currency = await super.getById(id);
+
+        
+
+        
+
+        return currency;    
     }
 
     override async update(id:string, currency:ICurrencyUpdate):Promise<ICurrencyView> {

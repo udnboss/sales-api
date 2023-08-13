@@ -1,8 +1,10 @@
 
 //import { Login, LoginCreate, LoginUpdate, LoginPartial, LoginView } from "./loginClasses"
 import { ILoginCreate, ILoginUpdate, ILoginPartial, ILoginView } from "./loginInterfaces";
-import { IQueryResult, IQuery, Context, Business } from "./base";
+import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
 import { randomUUID } from "crypto";
+
+
 
 export class LoginBusiness extends Business<ILoginView> {
 
@@ -41,8 +43,8 @@ export class LoginBusiness extends Business<ILoginView> {
   }
 };
     
-    override async getAll():Promise<IQueryResult<IQuery, ILoginView>> {
-        return super.getAll() as Promise<IQueryResult<IQuery, ILoginView>>;
+    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ILoginView>> {
+        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ILoginView>>;
     }
 
     override async create(login:ILoginCreate):Promise<ILoginView> {        
@@ -53,7 +55,13 @@ export class LoginBusiness extends Business<ILoginView> {
     }
 
     override async getById(id:string):Promise<ILoginView> {
-        return super.getById(id) as any;    
+        const login = await super.getById(id);
+
+        
+
+        
+
+        return login;    
     }
 
     override async update(id:string, login:ILoginUpdate):Promise<ILoginView> {

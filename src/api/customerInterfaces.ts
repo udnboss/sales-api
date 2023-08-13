@@ -1,7 +1,7 @@
 import { IEntity } from "./base";
 
-import { ICurrencyView } from "./currencyInterfaces";
-import { ISaleView } from "./saleInterfaces";
+import { ICurrency } from "./currencyInterfaces";
+import { ISale } from "./saleInterfaces";
 
 export interface ICustomer extends IEntity {
     name:string;

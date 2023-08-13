@@ -1,6 +1,6 @@
 import { IEntity } from "./base";
 
-
+import { IRolepermission } from "./rolePermissionInterfaces";
 
 export interface IRole extends IEntity {
     name:string;
@@ -20,4 +20,5 @@ export interface IRolePartial extends IEntity {
 
 export interface IRoleView extends IEntity {
     name?:string;
+    rolePermissions?:IRolepermissionView[];
 }

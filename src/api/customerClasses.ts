@@ -1,7 +1,7 @@
 import { Entity } from "./base";
 
-import { CurrencyView } from "./currencyClasses";
-import { SaleView } from "./saleClasses";
+import { Currency } from "./currencyClasses";
+import { Sale } from "./saleClasses";
 
 export class Customer extends Entity {
     name:string;
