@@ -16,53 +16,74 @@ export class UserBusiness extends Business<IUserView> {
     override createProperties: any = {
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "email": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "login_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   }
 };
     override updateProperties: any = {
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "email": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "login_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   }
 };
     override partialProperties: any = {
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "email": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "login_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   }
 };
     override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "email": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
+  },
+  "login_id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
   }
 };
     

@@ -6,6 +6,7 @@ import { ILoginView } from "./loginInterfaces";
 export interface IUserClientQuery extends IClientQuery {
     name?:string;
     email?:string;
+    login_id?:string;
 }
 
 export interface IUser extends IEntity {

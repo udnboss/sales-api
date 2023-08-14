@@ -5,6 +5,7 @@ import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
 export interface ILoginClientQuery extends IClientQuery {
     email?:string;
+    password?:string;
 }
 
 export interface ILogin extends IEntity {

@@ -5,11 +5,11 @@ import { ISaleCreate, ISaleUpdate, ISalePartial, ISaleView } from "./saleInterfa
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
+import { AccountBusiness } from "./accountBusiness";
+import { CurrencyBusiness } from "./currencyBusiness";
+import { CompanyBusiness } from "./companyBusiness";
 import { SaleitemBusiness } from "./saleItemBusiness";
 import { CustomerBusiness } from "./customerBusiness";
-import { CurrencyBusiness } from "./currencyBusiness";
-import { AccountBusiness } from "./accountBusiness";
-import { CompanyBusiness } from "./companyBusiness";
 
 export class SaleBusiness extends Business<ISaleView> {
 
@@ -20,129 +20,214 @@ export class SaleBusiness extends Business<ISaleView> {
     override createProperties: any = {
   "company_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "account_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "customer_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "currency_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "place": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "date": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "bt"
   },
   "reference": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "confirmed": {
     "required": true,
-    "type": "boolean"
+    "type": "boolean",
+    "operator": "eq"
   },
   "reference_date": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "bt"
   },
   "due_date": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "bt"
   }
 };
     override updateProperties: any = {
   "company_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "account_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "customer_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "currency_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "place": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "reference": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "confirmed": {
     "required": true,
-    "type": "boolean"
+    "type": "boolean",
+    "operator": "eq"
   },
   "reference_date": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "bt"
   },
   "due_date": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "bt"
   }
 };
     override partialProperties: any = {
   "company_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "account_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "customer_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "currency_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "place": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "reference": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "confirmed": {
     "required": false,
-    "type": "boolean"
+    "type": "boolean",
+    "operator": "eq"
   },
   "reference_date": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "bt"
   },
   "due_date": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "bt"
   }
 };
     override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
+  "company_id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
+  "account_id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
+  "customer_id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
+  "currency_id": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "place": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
   "number": {
     "required": false,
-    "type": "integer"
+    "type": "integer",
+    "operator": "bt"
   },
   "date": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "bt"
+  },
+  "total": {
+    "required": false,
+    "type": "number",
+    "operator": "bt"
+  },
+  "reference": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "confirmed": {
+    "required": false,
+    "type": "boolean",
+    "operator": "eq"
+  },
+  "reference_date": {
+    "required": false,
+    "type": "string",
+    "operator": "bt"
+  },
+  "due_date": {
+    "required": false,
+    "type": "string",
+    "operator": "bt"
   }
 };
     

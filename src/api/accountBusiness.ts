@@ -16,97 +16,154 @@ export class AccountBusiness extends Business<IAccountView> {
     override createProperties: any = {
   "label": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "bank_name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "bank_address": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "bank_swift": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "account_name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "account_iban": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "account_address": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override updateProperties: any = {
   "label": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "bank_name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "bank_address": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "bank_swift": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "account_name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "account_iban": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "account_address": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override partialProperties: any = {
   "label": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "bank_name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "bank_address": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "bank_swift": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "account_name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "account_iban": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "account_address": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
   "label": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
+  },
+  "bank_name": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "bank_address": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "bank_swift": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "account_name": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "account_iban": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "account_address": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
   }
 };
     

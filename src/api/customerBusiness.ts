@@ -5,8 +5,8 @@ import { ICustomerCreate, ICustomerUpdate, ICustomerPartial, ICustomerView } fro
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
-import { SaleBusiness } from "./saleBusiness";
 import { CurrencyBusiness } from "./currencyBusiness";
+import { SaleBusiness } from "./saleBusiness";
 
 export class CustomerBusiness extends Business<ICustomerView> {
 
@@ -17,73 +17,114 @@ export class CustomerBusiness extends Business<ICustomerView> {
     override createProperties: any = {
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "address": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "contact": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "currency_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "payment_term": {
     "required": false,
-    "type": "integer"
+    "type": "integer",
+    "operator": "bt"
   }
 };
     override updateProperties: any = {
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "address": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "contact": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "currency_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "payment_term": {
     "required": false,
-    "type": "integer"
+    "type": "integer",
+    "operator": "bt"
   }
 };
     override partialProperties: any = {
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "address": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "contact": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "currency_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "payment_term": {
     "required": false,
-    "type": "integer"
+    "type": "integer",
+    "operator": "bt"
   }
 };
     override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
+  },
+  "address": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "contact": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "currency_id": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "payment_term": {
+    "required": false,
+    "type": "integer",
+    "operator": "bt"
   }
 };
     

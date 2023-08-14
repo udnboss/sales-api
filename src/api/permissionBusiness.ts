@@ -16,61 +16,89 @@ export class PermissionBusiness extends Business<IPermissionView> {
     override createProperties: any = {
   "id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "entity": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "action": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override updateProperties: any = {
   "id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "entity": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "action": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override partialProperties: any = {
   "id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "entity": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "action": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
+  },
+  "entity": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "action": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
   }
 };
     

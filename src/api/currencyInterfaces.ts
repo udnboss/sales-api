@@ -5,6 +5,7 @@ import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
 export interface ICurrencyClientQuery extends IClientQuery {
     name?:string;
+    symbol?:string;
 }
 
 export interface ICurrency extends IEntity {

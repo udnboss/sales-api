@@ -16,97 +16,154 @@ export class CompanyBusiness extends Business<ICompanyView> {
     override createProperties: any = {
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "address": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "crn": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "trn": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "contact": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "mobile": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "email": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override updateProperties: any = {
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "address": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "crn": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "trn": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "contact": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "mobile": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "email": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override partialProperties: any = {
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "address": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "crn": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "trn": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "contact": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "mobile": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "email": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
+  },
+  "address": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "crn": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "trn": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "contact": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "mobile": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "email": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
   }
 };
     

@@ -72,6 +72,21 @@ components:
       type: object
     accountQuery:
       properties:
+        account_address:
+          type: string
+        account_iban:
+          type: string
+        account_name:
+          type: string
+        bank_address:
+          type: string
+        bank_name:
+          type: string
+        bank_swift:
+          type: string
+        id:
+          format: uuid
+          type: string
         label:
           type: string
       type: object
@@ -153,6 +168,12 @@ components:
       type: object
     categoryQuery:
       properties:
+        category_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
         name:
           type: string
       type: object
@@ -258,7 +279,23 @@ components:
       type: object
     companyQuery:
       properties:
+        address:
+          type: string
+        contact:
+          type: string
+        crn:
+          type: string
+        email:
+          format: email
+          type: string
+        id:
+          format: uuid
+          type: string
+        mobile:
+          type: string
         name:
+          type: string
+        trn:
           type: string
       type: object
     companyUpdate:
@@ -345,7 +382,11 @@ components:
       type: object
     currencyQuery:
       properties:
+        id:
+          type: string
         name:
+          type: string
+        symbol:
           type: string
       type: object
     currencyUpdate:
@@ -418,8 +459,19 @@ components:
       type: object
     customerQuery:
       properties:
+        address:
+          type: string
+        contact:
+          type: string
+        currency_id:
+          type: string
+        id:
+          format: uuid
+          type: string
         name:
           type: string
+        payment_term:
+          type: integer
       type: object
     customerUpdate:
       properties:
@@ -491,6 +543,12 @@ components:
       type: object
     itemQuery:
       properties:
+        category_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
         name:
           type: string
       type: object
@@ -557,6 +615,12 @@ components:
       properties:
         email:
           format: email
+          type: string
+        id:
+          format: uuid
+          type: string
+        password:
+          format: password
           type: string
       type: object
     loginUpdate:
@@ -628,6 +692,12 @@ components:
       type: object
     permissionQuery:
       properties:
+        action:
+          type: string
+        entity:
+          type: string
+        id:
+          type: string
         name:
           type: string
       type: object
@@ -728,7 +798,14 @@ components:
           type: string
       type: object
     rolePermissionQuery:
-      properties: {}
+      properties:
+        id:
+          format: uuid
+          type: string
+        permission_id:
+          type: string
+        role_id:
+          type: string
       type: object
     rolePermissionUpdate:
       properties:
@@ -760,6 +837,8 @@ components:
       type: object
     roleQuery:
       properties:
+        id:
+          type: string
         name:
           type: string
       type: object
@@ -923,7 +1002,22 @@ components:
           type: string
       type: object
     saleItemQuery:
-      properties: {}
+      properties:
+        description:
+          type: string
+        id:
+          format: uuid
+          type: string
+        item_id:
+          format: uuid
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+        sale_id:
+          format: uuid
+          type: string
       type: object
     saleItemUpdate:
       properties:
@@ -995,11 +1089,39 @@ components:
       type: object
     saleQuery:
       properties:
+        account_id:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        confirmed:
+          type: boolean
+        currency_id:
+          type: string
+        customer_id:
+          format: uuid
+          type: string
         date:
           format: date
           type: string
+        due_date:
+          format: date
+          type: string
+        id:
+          format: uuid
+          type: string
         number:
           type: integer
+        place:
+          type: string
+        reference:
+          type: string
+        reference_date:
+          format: date
+          type: string
+        total:
+          type: number
       type: object
     saleUpdate:
       properties:
@@ -1129,6 +1251,12 @@ components:
       properties:
         email:
           format: email
+          type: string
+        id:
+          format: uuid
+          type: string
+        login_id:
+          format: uuid
           type: string
         name:
           type: string
@@ -3157,14 +3285,14 @@ paths:
       description: get all user entities
       operationId: getUsers
       parameters:
-      - description: Filter Users by email
-        in: query
-        name: email
-        schema:
-          type: string
       - description: Filter Users by name
         in: query
         name: name
+        schema:
+          type: string
+      - description: Filter Users by email
+        in: query
+        name: email
         schema:
           type: string
       responses:

@@ -5,6 +5,7 @@ import { ICategoryView } from "./categoryInterfaces";
 
 export interface IItemClientQuery extends IClientQuery {
     name?:string;
+    category_id?:string;
 }
 
 export interface IItem extends IEntity {

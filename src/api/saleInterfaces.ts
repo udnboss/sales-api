@@ -1,15 +1,25 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
-import { ISaleitemView } from "./saleItemInterfaces";
-import { ICustomerView } from "./customerInterfaces";
-import { ICompanyView } from "./companyInterfaces";
-import { IAccountView } from "./accountInterfaces";
 import { ICurrencyView } from "./currencyInterfaces";
+import { ISaleitemView } from "./saleItemInterfaces";
+import { ICompanyView } from "./companyInterfaces";
+import { ICustomerView } from "./customerInterfaces";
+import { IAccountView } from "./accountInterfaces";
 
 export interface ISaleClientQuery extends IClientQuery {
+    company_id?:string;
+    account_id?:string;
+    customer_id?:string;
+    currency_id?:string;
+    place?:string;
     number?:number;
     date?:string;
+    total?:number;
+    reference?:string;
+    confirmed?:boolean;
+    reference_date?:string;
+    due_date?:string;
 }
 
 export interface ISale extends IEntity {

@@ -5,6 +5,12 @@ import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
 export interface ICompanyClientQuery extends IClientQuery {
     name?:string;
+    address?:string;
+    crn?:string;
+    trn?:string;
+    contact?:string;
+    mobile?:string;
+    email?:string;
 }
 
 export interface ICompany extends IEntity {

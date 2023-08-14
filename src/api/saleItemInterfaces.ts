@@ -1,11 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
-import { ISaleView } from "./saleInterfaces";
 import { IItemView } from "./itemInterfaces";
+import { ISaleView } from "./saleInterfaces";
 
 export interface ISaleitemClientQuery extends IClientQuery {
-    
+    sale_id?:string;
+    item_id?:string;
+    description?:string;
+    quantity?:number;
+    price?:number;
 }
 
 export interface ISaleitem extends IEntity {

@@ -5,8 +5,8 @@ import { IRolepermissionCreate, IRolepermissionUpdate, IRolepermissionPartial, I
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
-import { PermissionBusiness } from "./permissionBusiness";
 import { RoleBusiness } from "./roleBusiness";
+import { PermissionBusiness } from "./permissionBusiness";
 
 export class RolepermissionBusiness extends Business<IRolepermissionView> {
 
@@ -17,46 +17,71 @@ export class RolepermissionBusiness extends Business<IRolepermissionView> {
     override createProperties: any = {
   "id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "role_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "permission_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override updateProperties: any = {
   "id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "role_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "permission_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override partialProperties: any = {
   "id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "role_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "permission_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
-    override queryProperties: any = {};
+    override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
+  "role_id": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "permission_id": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  }
+};
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IRolepermissionView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IRolepermissionView>>;

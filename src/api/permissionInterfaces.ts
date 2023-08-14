@@ -5,6 +5,8 @@ import { IRolepermissionView } from "./rolePermissionInterfaces";
 
 export interface IPermissionClientQuery extends IClientQuery {
     name?:string;
+    entity?:string;
+    action?:string;
 }
 
 export interface IPermission extends IEntity {

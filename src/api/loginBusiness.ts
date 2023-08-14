@@ -16,37 +16,54 @@ export class LoginBusiness extends Business<ILoginView> {
     override createProperties: any = {
   "email": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "password": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override updateProperties: any = {
   "email": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "password": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override partialProperties: any = {
   "email": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "password": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
   "email": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
+  },
+  "password": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
   }
 };
     

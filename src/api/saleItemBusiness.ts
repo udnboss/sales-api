@@ -5,8 +5,8 @@ import { ISaleitemCreate, ISaleitemUpdate, ISaleitemPartial, ISaleitemView } fro
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
-import { ItemBusiness } from "./itemBusiness";
 import { SaleBusiness } from "./saleBusiness";
+import { ItemBusiness } from "./itemBusiness";
 
 export class SaleitemBusiness extends Business<ISaleitemView> {
 
@@ -17,70 +17,116 @@ export class SaleitemBusiness extends Business<ISaleitemView> {
     override createProperties: any = {
   "sale_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "item_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "description": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "quantity": {
     "required": true,
-    "type": "integer"
+    "type": "integer",
+    "operator": "bt"
   },
   "price": {
     "required": true,
-    "type": "number"
+    "type": "number",
+    "operator": "bt"
   }
 };
     override updateProperties: any = {
   "sale_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "item_id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "description": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "quantity": {
     "required": true,
-    "type": "integer"
+    "type": "integer",
+    "operator": "bt"
   },
   "price": {
     "required": true,
-    "type": "number"
+    "type": "number",
+    "operator": "bt"
   }
 };
     override partialProperties: any = {
   "sale_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "item_id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "in"
   },
   "description": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "quantity": {
     "required": false,
-    "type": "integer"
+    "type": "integer",
+    "operator": "bt"
   },
   "price": {
     "required": false,
-    "type": "number"
+    "type": "number",
+    "operator": "bt"
   }
 };
-    override queryProperties: any = {};
+    override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
+  "sale_id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
+  "item_id": {
+    "required": false,
+    "type": "string",
+    "operator": "in"
+  },
+  "description": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
+  "quantity": {
+    "required": false,
+    "type": "integer",
+    "operator": "bt"
+  },
+  "price": {
+    "required": false,
+    "type": "number",
+    "operator": "bt"
+  }
+};
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ISaleitemView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ISaleitemView>>;

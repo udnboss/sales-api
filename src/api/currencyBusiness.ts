@@ -16,49 +16,69 @@ export class CurrencyBusiness extends Business<ICurrencyView> {
     override createProperties: any = {
   "id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "symbol": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override updateProperties: any = {
   "id": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "name": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "symbol": {
     "required": true,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override partialProperties: any = {
   "id": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   },
   "symbol": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
   }
 };
     override queryProperties: any = {
+  "id": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
+  },
   "name": {
     "required": false,
-    "type": "string"
+    "type": "string",
+    "operator": "like"
+  },
+  "symbol": {
+    "required": false,
+    "type": "string",
+    "operator": "like"
   }
 };
     

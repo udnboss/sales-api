@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Entity, IQueryResult, IQuery } from "./base";
 
-import { SaleView } from "./saleClasses";
 import { CurrencyView } from "./currencyClasses";
+import { SaleView } from "./saleClasses";
 
 export class Customer extends Entity {
     name:string;
