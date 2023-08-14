@@ -1,7 +1,8 @@
 
 //import { User, UserCreate, UserUpdate, UserPartial, UserView } from "./userClasses"
 import { IUserCreate, IUserUpdate, IUserPartial, IUserView } from "./userInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 import { LoginBusiness } from "./loginBusiness";
@@ -54,9 +55,19 @@ export class UserBusiness extends Business<IUserView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {
+  "name": {
+    "required": false,
+    "type": "string"
+  },
+  "email": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, IUserView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, IUserView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IUserView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IUserView>>;
     }
 
     override async create(user:IUserCreate):Promise<IUserView> {        
@@ -66,12 +77,18 @@ export class UserBusiness extends Business<IUserView> {
         return super.create(user) as Promise<IUserView>;
     }
 
-    override async getById(id:string):Promise<IUserView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<IUserView> {
         const user = await super.getById(id);
 
-        if (user.login) { user.login = await new LoginBusiness(this.context).getById(user.login_id); }
+        maxDepth--;
 
+        if (user.login_id) { user.login = await new LoginBusiness(this.context).getById(user.login_id); }
         
+        if (maxDepth) {
+          
+        
+          maxDepth--;
+        }
 
         return user;    
     }

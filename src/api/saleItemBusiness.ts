@@ -1,7 +1,8 @@
 
 //import { Saleitem, SaleitemCreate, SaleitemUpdate, SaleitemPartial, SaleitemView } from "./saleItemClasses"
 import { ISaleitemCreate, ISaleitemUpdate, ISaleitemPartial, ISaleitemView } from "./saleItemInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 import { ItemBusiness } from "./itemBusiness";
@@ -79,9 +80,10 @@ export class SaleitemBusiness extends Business<ISaleitemView> {
     "type": "number"
   }
 };
+    override queryProperties: any = {};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ISaleitemView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ISaleitemView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ISaleitemView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ISaleitemView>>;
     }
 
     override async create(saleItem:ISaleitemCreate):Promise<ISaleitemView> {        
@@ -91,14 +93,19 @@ export class SaleitemBusiness extends Business<ISaleitemView> {
         return super.create(saleItem) as Promise<ISaleitemView>;
     }
 
-    override async getById(id:string):Promise<ISaleitemView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<ISaleitemView> {
         const saleItem = await super.getById(id);
 
-        if (saleItem.sale) { saleItem.sale = await new SaleBusiness(this.context).getById(saleItem.sale_id); }
+        maxDepth--;
 
-        if (saleItem.item) { saleItem.item = await new ItemBusiness(this.context).getById(saleItem.item_id); }
-
+        if (saleItem.sale_id) { saleItem.sale = await new SaleBusiness(this.context).getById(saleItem.sale_id); }
+        if (saleItem.item_id) { saleItem.item = await new ItemBusiness(this.context).getById(saleItem.item_id); }
         
+        if (maxDepth) {
+          
+        
+          maxDepth--;
+        }
 
         return saleItem;    
     }

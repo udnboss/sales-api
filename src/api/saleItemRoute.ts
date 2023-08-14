@@ -1,6 +1,6 @@
 import express from "express";
 import { ISaleitemCreate, ISaleitemUpdate, ISaleitemPartial, ISaleitemView } from "./saleItemInterfaces";
-import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IEntity } from "./base";
+import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IDataQuery, IEntity } from "./base";
 import { SaleitemBusiness } from "./saleItemBusiness";
 
 export const saleItemRouter = express.Router();
@@ -12,14 +12,26 @@ const context = new Context(env);
 const business = new SaleitemBusiness(context);
 
 saleItemRouter.get<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
-    //TODO: check for error
-    const results = await business.getAll() as IQueryResult<IQuery, ISaleitemView>;
-    const message = {
-        success: true,
-        message: "successful",
-        data: results
-    };
-    res.json(message);
+
+    var query:IDataQuery;
+
+    try {
+        query = business.convertToDataQuery(req.query);
+    } catch (err) {
+        return res.status(400).json({ success: false, message: `Bad query for saleItem: ${err}` });
+    }
+
+    try {
+        const results = await business.getAll(query) as IQueryResult<IQuery, ISaleitemView>;
+        const message = {
+            success: true,
+            message: "successful",
+            data: results
+        };
+        return res.json(message);
+    } catch (err) {
+        return res.status(500).json({ success: false, message: `Could not retrieve saleItem records: ${err}` });
+    }    
 });
 
 saleItemRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
@@ -63,17 +75,17 @@ saleItemRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) =
 
 saleItemRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
     const id = (req.params as IEntity).id;
-    const viewEntity = await business.getById(id) as ISaleitemView;
-    if (viewEntity == null) {
-        res.status(404).json({ success: false, message: "saleItem entity not found" });
-        return;
+    try {
+        const viewEntity = await business.getById(id, 2) as ISaleitemView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) { //TODO: a meaningful error code should explain what happened so we can either return 404, 403, or 500.
+        return res.status(404).json({ success: false, message: "saleItem entity not found" });
     }
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
 });
 
 saleItemRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

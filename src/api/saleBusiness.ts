@@ -1,13 +1,14 @@
 
 //import { Sale, SaleCreate, SaleUpdate, SalePartial, SaleView } from "./saleClasses"
 import { ISaleCreate, ISaleUpdate, ISalePartial, ISaleView } from "./saleInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
-import { AccountBusiness } from "./accountBusiness";
-import { CurrencyBusiness } from "./currencyBusiness";
 import { SaleitemBusiness } from "./saleItemBusiness";
 import { CustomerBusiness } from "./customerBusiness";
+import { CurrencyBusiness } from "./currencyBusiness";
+import { AccountBusiness } from "./accountBusiness";
 import { CompanyBusiness } from "./companyBusiness";
 
 export class SaleBusiness extends Business<ISaleView> {
@@ -134,9 +135,19 @@ export class SaleBusiness extends Business<ISaleView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {
+  "number": {
+    "required": false,
+    "type": "integer"
+  },
+  "date": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ISaleView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ISaleView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ISaleView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ISaleView>>;
     }
 
     override async create(sale:ISaleCreate):Promise<ISaleView> {        
@@ -146,18 +157,22 @@ export class SaleBusiness extends Business<ISaleView> {
         return super.create(sale) as Promise<ISaleView>;
     }
 
-    override async getById(id:string):Promise<ISaleView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<ISaleView> {
         const sale = await super.getById(id);
 
-        if (sale.currency) { sale.currency = await new CurrencyBusiness(this.context).getById(sale.currency_id); }
+        maxDepth--;
 
-        if (sale.customer) { sale.customer = await new CustomerBusiness(this.context).getById(sale.customer_id); }
-
-        if (sale.account) { sale.account = await new AccountBusiness(this.context).getById(sale.account_id); }
-
-        if (sale.company) { sale.company = await new CompanyBusiness(this.context).getById(sale.company_id); }
-
-        sale.items = (await new SaleitemBusiness(this.context).getAll([ { column: 'sale_id', operator: Operator.Equals, value: sale.id } as ICondition])).result;
+        if (sale.currency_id) { sale.currency = await new CurrencyBusiness(this.context).getById(sale.currency_id); }
+        if (sale.customer_id) { sale.customer = await new CustomerBusiness(this.context).getById(sale.customer_id); }
+        if (sale.account_id) { sale.account = await new AccountBusiness(this.context).getById(sale.account_id); }
+        if (sale.company_id) { sale.company = await new CompanyBusiness(this.context).getById(sale.company_id); }
+        
+        if (maxDepth) {
+          var querySaleitem = { where: [ { column: 'sale_id', operator: Operator.Equals, value: sale.id } as ICondition] } as IDataQuery;
+          sale.items = (await new SaleitemBusiness(this.context).getAll(querySaleitem, maxDepth));
+        
+          maxDepth--;
+        }
 
         return sale;    
     }

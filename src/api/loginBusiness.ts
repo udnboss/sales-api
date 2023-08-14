@@ -1,7 +1,8 @@
 
 //import { Login, LoginCreate, LoginUpdate, LoginPartial, LoginView } from "./loginClasses"
 import { ILoginCreate, ILoginUpdate, ILoginPartial, ILoginView } from "./loginInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 
@@ -42,9 +43,15 @@ export class LoginBusiness extends Business<ILoginView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {
+  "email": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ILoginView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ILoginView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ILoginView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ILoginView>>;
     }
 
     override async create(login:ILoginCreate):Promise<ILoginView> {        
@@ -54,12 +61,18 @@ export class LoginBusiness extends Business<ILoginView> {
         return super.create(login) as Promise<ILoginView>;
     }
 
-    override async getById(id:string):Promise<ILoginView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<ILoginView> {
         const login = await super.getById(id);
 
-        
+        maxDepth--;
 
         
+        
+        if (maxDepth) {
+          
+        
+          maxDepth--;
+        }
 
         return login;    
     }

@@ -1,7 +1,8 @@
 
 //import { Currency, CurrencyCreate, CurrencyUpdate, CurrencyPartial, CurrencyView } from "./currencyClasses"
 import { ICurrencyCreate, ICurrencyUpdate, ICurrencyPartial, ICurrencyView } from "./currencyInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 
@@ -54,9 +55,15 @@ export class CurrencyBusiness extends Business<ICurrencyView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {
+  "name": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ICurrencyView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ICurrencyView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ICurrencyView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ICurrencyView>>;
     }
 
     override async create(currency:ICurrencyCreate):Promise<ICurrencyView> {        
@@ -66,12 +73,18 @@ export class CurrencyBusiness extends Business<ICurrencyView> {
         return super.create(currency) as Promise<ICurrencyView>;
     }
 
-    override async getById(id:string):Promise<ICurrencyView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<ICurrencyView> {
         const currency = await super.getById(id);
 
-        
+        maxDepth--;
 
         
+        
+        if (maxDepth) {
+          
+        
+          maxDepth--;
+        }
 
         return currency;    
     }

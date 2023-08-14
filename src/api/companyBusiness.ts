@@ -1,7 +1,8 @@
 
 //import { Company, CompanyCreate, CompanyUpdate, CompanyPartial, CompanyView } from "./companyClasses"
 import { ICompanyCreate, ICompanyUpdate, ICompanyPartial, ICompanyView } from "./companyInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 
@@ -102,9 +103,15 @@ export class CompanyBusiness extends Business<ICompanyView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {
+  "name": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ICompanyView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ICompanyView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ICompanyView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ICompanyView>>;
     }
 
     override async create(company:ICompanyCreate):Promise<ICompanyView> {        
@@ -114,12 +121,18 @@ export class CompanyBusiness extends Business<ICompanyView> {
         return super.create(company) as Promise<ICompanyView>;
     }
 
-    override async getById(id:string):Promise<ICompanyView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<ICompanyView> {
         const company = await super.getById(id);
 
-        
+        maxDepth--;
 
         
+        
+        if (maxDepth) {
+          
+        
+          maxDepth--;
+        }
 
         return company;    
     }

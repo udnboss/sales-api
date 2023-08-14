@@ -1,11 +1,12 @@
 
 //import { Customer, CustomerCreate, CustomerUpdate, CustomerPartial, CustomerView } from "./customerClasses"
 import { ICustomerCreate, ICustomerUpdate, ICustomerPartial, ICustomerView } from "./customerInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
-import { CurrencyBusiness } from "./currencyBusiness";
 import { SaleBusiness } from "./saleBusiness";
+import { CurrencyBusiness } from "./currencyBusiness";
 
 export class CustomerBusiness extends Business<ICustomerView> {
 
@@ -79,9 +80,15 @@ export class CustomerBusiness extends Business<ICustomerView> {
     "type": "integer"
   }
 };
+    override queryProperties: any = {
+  "name": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ICustomerView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ICustomerView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ICustomerView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ICustomerView>>;
     }
 
     override async create(customer:ICustomerCreate):Promise<ICustomerView> {        
@@ -91,12 +98,19 @@ export class CustomerBusiness extends Business<ICustomerView> {
         return super.create(customer) as Promise<ICustomerView>;
     }
 
-    override async getById(id:string):Promise<ICustomerView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<ICustomerView> {
         const customer = await super.getById(id);
 
-        if (customer.currency) { customer.currency = await new CurrencyBusiness(this.context).getById(customer.currency_id); }
+        maxDepth--;
 
-        customer.sales = (await new SaleBusiness(this.context).getAll([ { column: 'customer_id', operator: Operator.Equals, value: customer.id } as ICondition])).result;
+        if (customer.currency_id) { customer.currency = await new CurrencyBusiness(this.context).getById(customer.currency_id); }
+        
+        if (maxDepth) {
+          var querySale = { where: [ { column: 'customer_id', operator: Operator.Equals, value: customer.id } as ICondition] } as IDataQuery;
+          customer.sales = (await new SaleBusiness(this.context).getAll(querySale, maxDepth));
+        
+          maxDepth--;
+        }
 
         return customer;    
     }

@@ -1,7 +1,8 @@
 
 //import { Item, ItemCreate, ItemUpdate, ItemPartial, ItemView } from "./itemClasses"
 import { IItemCreate, IItemUpdate, IItemPartial, IItemView } from "./itemInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 import { CategoryBusiness } from "./categoryBusiness";
@@ -42,9 +43,15 @@ export class ItemBusiness extends Business<IItemView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {
+  "name": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, IItemView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, IItemView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IItemView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IItemView>>;
     }
 
     override async create(item:IItemCreate):Promise<IItemView> {        
@@ -54,12 +61,18 @@ export class ItemBusiness extends Business<IItemView> {
         return super.create(item) as Promise<IItemView>;
     }
 
-    override async getById(id:string):Promise<IItemView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<IItemView> {
         const item = await super.getById(id);
 
-        if (item.category) { item.category = await new CategoryBusiness(this.context).getById(item.category_id); }
+        maxDepth--;
 
+        if (item.category_id) { item.category = await new CategoryBusiness(this.context).getById(item.category_id); }
         
+        if (maxDepth) {
+          
+        
+          maxDepth--;
+        }
 
         return item;    
     }

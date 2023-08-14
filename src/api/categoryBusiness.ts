@@ -1,7 +1,8 @@
 
 //import { Category, CategoryCreate, CategoryUpdate, CategoryPartial, CategoryView } from "./categoryClasses"
 import { ICategoryCreate, ICategoryUpdate, ICategoryPartial, ICategoryView } from "./categoryInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 import { ItemBusiness } from "./itemBusiness";
@@ -42,9 +43,15 @@ export class CategoryBusiness extends Business<ICategoryView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {
+  "name": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, ICategoryView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, ICategoryView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ICategoryView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ICategoryView>>;
     }
 
     override async create(category:ICategoryCreate):Promise<ICategoryView> {        
@@ -54,12 +61,19 @@ export class CategoryBusiness extends Business<ICategoryView> {
         return super.create(category) as Promise<ICategoryView>;
     }
 
-    override async getById(id:string):Promise<ICategoryView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<ICategoryView> {
         const category = await super.getById(id);
 
-        if (category.category) { category.category = await new CategoryBusiness(this.context).getById(category.category_id); }
+        maxDepth--;
 
-        category.items = (await new ItemBusiness(this.context).getAll([ { column: 'category_id', operator: Operator.Equals, value: category.id } as ICondition])).result;
+        if (category.category_id) { category.category = await new CategoryBusiness(this.context).getById(category.category_id); }
+        
+        if (maxDepth) {
+          var queryItem = { where: [ { column: 'category_id', operator: Operator.Equals, value: category.id } as ICondition] } as IDataQuery;
+          category.items = (await new ItemBusiness(this.context).getAll(queryItem, maxDepth));
+        
+          maxDepth--;
+        }
 
         return category;    
     }

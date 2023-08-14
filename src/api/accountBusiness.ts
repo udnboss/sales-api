@@ -1,7 +1,8 @@
 
 //import { Account, AccountCreate, AccountUpdate, AccountPartial, AccountView } from "./accountClasses"
 import { IAccountCreate, IAccountUpdate, IAccountPartial, IAccountView } from "./accountInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 
@@ -102,9 +103,15 @@ export class AccountBusiness extends Business<IAccountView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {
+  "label": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, IAccountView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, IAccountView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IAccountView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IAccountView>>;
     }
 
     override async create(account:IAccountCreate):Promise<IAccountView> {        
@@ -114,12 +121,18 @@ export class AccountBusiness extends Business<IAccountView> {
         return super.create(account) as Promise<IAccountView>;
     }
 
-    override async getById(id:string):Promise<IAccountView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<IAccountView> {
         const account = await super.getById(id);
 
-        
+        maxDepth--;
 
         
+        
+        if (maxDepth) {
+          
+        
+          maxDepth--;
+        }
 
         return account;    
     }

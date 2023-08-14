@@ -1,6 +1,6 @@
 import express from "express";
 import { ICategoryCreate, ICategoryUpdate, ICategoryPartial, ICategoryView } from "./categoryInterfaces";
-import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IEntity } from "./base";
+import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IDataQuery, IEntity } from "./base";
 import { CategoryBusiness } from "./categoryBusiness";
 
 export const categoryRouter = express.Router();
@@ -12,14 +12,26 @@ const context = new Context(env);
 const business = new CategoryBusiness(context);
 
 categoryRouter.get<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
-    //TODO: check for error
-    const results = await business.getAll() as IQueryResult<IQuery, ICategoryView>;
-    const message = {
-        success: true,
-        message: "successful",
-        data: results
-    };
-    res.json(message);
+
+    var query:IDataQuery;
+
+    try {
+        query = business.convertToDataQuery(req.query);
+    } catch (err) {
+        return res.status(400).json({ success: false, message: `Bad query for category: ${err}` });
+    }
+
+    try {
+        const results = await business.getAll(query) as IQueryResult<IQuery, ICategoryView>;
+        const message = {
+            success: true,
+            message: "successful",
+            data: results
+        };
+        return res.json(message);
+    } catch (err) {
+        return res.status(500).json({ success: false, message: `Could not retrieve category records: ${err}` });
+    }    
 });
 
 categoryRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
@@ -63,17 +75,17 @@ categoryRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) =
 
 categoryRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
     const id = (req.params as IEntity).id;
-    const viewEntity = await business.getById(id) as ICategoryView;
-    if (viewEntity == null) {
-        res.status(404).json({ success: false, message: "category entity not found" });
-        return;
+    try {
+        const viewEntity = await business.getById(id, 2) as ICategoryView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) { //TODO: a meaningful error code should explain what happened so we can either return 404, 403, or 500.
+        return res.status(404).json({ success: false, message: "category entity not found" });
     }
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
 });
 
 categoryRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

@@ -1,7 +1,8 @@
 
 //import { Rolepermission, RolepermissionCreate, RolepermissionUpdate, RolepermissionPartial, RolepermissionView } from "./rolePermissionClasses"
 import { IRolepermissionCreate, IRolepermissionUpdate, IRolepermissionPartial, IRolepermissionView } from "./rolePermissionInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 import { PermissionBusiness } from "./permissionBusiness";
@@ -55,9 +56,10 @@ export class RolepermissionBusiness extends Business<IRolepermissionView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, IRolepermissionView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, IRolepermissionView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IRolepermissionView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IRolepermissionView>>;
     }
 
     override async create(rolePermission:IRolepermissionCreate):Promise<IRolepermissionView> {        
@@ -67,14 +69,19 @@ export class RolepermissionBusiness extends Business<IRolepermissionView> {
         return super.create(rolePermission) as Promise<IRolepermissionView>;
     }
 
-    override async getById(id:string):Promise<IRolepermissionView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<IRolepermissionView> {
         const rolePermission = await super.getById(id);
 
-        if (rolePermission.role) { rolePermission.role = await new RoleBusiness(this.context).getById(rolePermission.role_id); }
+        maxDepth--;
 
-        if (rolePermission.permission) { rolePermission.permission = await new PermissionBusiness(this.context).getById(rolePermission.permission_id); }
-
+        if (rolePermission.role_id) { rolePermission.role = await new RoleBusiness(this.context).getById(rolePermission.role_id); }
+        if (rolePermission.permission_id) { rolePermission.permission = await new PermissionBusiness(this.context).getById(rolePermission.permission_id); }
         
+        if (maxDepth) {
+          
+        
+          maxDepth--;
+        }
 
         return rolePermission;    
     }

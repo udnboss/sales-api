@@ -1,6 +1,7 @@
-import { Entity } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Entity, IQueryResult, IQuery } from "./base";
 
-import { Rolepermission } from "./rolePermissionClasses";
+import { RolepermissionView } from "./rolePermissionClasses";
 
 export class Role extends Entity {
     name:string;
@@ -20,5 +21,5 @@ export class RolePartial extends Entity {
 
 export class RoleView extends Entity {
     name?:string;
-    rolePermissions?:RolepermissionView[];
+    rolePermissions?:IQueryResult<IQuery, RolepermissionView>;
 }

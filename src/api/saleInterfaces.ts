@@ -1,10 +1,16 @@
-import { IEntity } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
-import { ICurrency } from "./currencyInterfaces";
-import { ICustomer } from "./customerInterfaces";
-import { ISaleitem } from "./saleItemInterfaces";
-import { ICompany } from "./companyInterfaces";
-import { IAccount } from "./accountInterfaces";
+import { ISaleitemView } from "./saleItemInterfaces";
+import { ICustomerView } from "./customerInterfaces";
+import { ICompanyView } from "./companyInterfaces";
+import { IAccountView } from "./accountInterfaces";
+import { ICurrencyView } from "./currencyInterfaces";
+
+export interface ISaleClientQuery extends IClientQuery {
+    number?:number;
+    date?:string;
+}
 
 export interface ISale extends IEntity {
     company_id:string;
@@ -75,5 +81,5 @@ export interface ISaleView extends IEntity {
     customer?:ICustomerView;
     account?:IAccountView;
     company?:ICompanyView;
-    items?:ISaleitemView[];
+    items?:IQueryResult<IQuery, ISaleitemView>;
 }

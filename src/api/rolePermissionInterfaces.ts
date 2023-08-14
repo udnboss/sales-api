@@ -1,7 +1,12 @@
-import { IEntity } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
-import { IPermission } from "./permissionInterfaces";
-import { IRole } from "./roleInterfaces";
+import { IRoleView } from "./roleInterfaces";
+import { IPermissionView } from "./permissionInterfaces";
+
+export interface IRolepermissionClientQuery extends IClientQuery {
+    
+}
 
 export interface IRolepermission extends IEntity {
     role_id:string;

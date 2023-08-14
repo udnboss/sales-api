@@ -1,6 +1,6 @@
 import express from "express";
 import { IPermissionCreate, IPermissionUpdate, IPermissionPartial, IPermissionView } from "./permissionInterfaces";
-import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IEntity } from "./base";
+import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IDataQuery, IEntity } from "./base";
 import { PermissionBusiness } from "./permissionBusiness";
 
 export const permissionRouter = express.Router();
@@ -12,14 +12,26 @@ const context = new Context(env);
 const business = new PermissionBusiness(context);
 
 permissionRouter.get<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
-    //TODO: check for error
-    const results = await business.getAll() as IQueryResult<IQuery, IPermissionView>;
-    const message = {
-        success: true,
-        message: "successful",
-        data: results
-    };
-    res.json(message);
+
+    var query:IDataQuery;
+
+    try {
+        query = business.convertToDataQuery(req.query);
+    } catch (err) {
+        return res.status(400).json({ success: false, message: `Bad query for permission: ${err}` });
+    }
+
+    try {
+        const results = await business.getAll(query) as IQueryResult<IQuery, IPermissionView>;
+        const message = {
+            success: true,
+            message: "successful",
+            data: results
+        };
+        return res.json(message);
+    } catch (err) {
+        return res.status(500).json({ success: false, message: `Could not retrieve permission records: ${err}` });
+    }    
 });
 
 permissionRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
@@ -63,17 +75,17 @@ permissionRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res)
 
 permissionRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
     const id = (req.params as IEntity).id;
-    const viewEntity = await business.getById(id) as IPermissionView;
-    if (viewEntity == null) {
-        res.status(404).json({ success: false, message: "permission entity not found" });
-        return;
+    try {
+        const viewEntity = await business.getById(id, 2) as IPermissionView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) { //TODO: a meaningful error code should explain what happened so we can either return 404, 403, or 500.
+        return res.status(404).json({ success: false, message: "permission entity not found" });
     }
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
 });
 
 permissionRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

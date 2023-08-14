@@ -1,6 +1,12 @@
-import { IEntity } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
-import { ILogin } from "./loginInterfaces";
+import { ILoginView } from "./loginInterfaces";
+
+export interface IUserClientQuery extends IClientQuery {
+    name?:string;
+    email?:string;
+}
 
 export interface IUser extends IEntity {
     name:string;

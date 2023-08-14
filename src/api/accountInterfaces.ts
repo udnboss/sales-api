@@ -1,6 +1,11 @@
-import { IEntity } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
 
+
+export interface IAccountClientQuery extends IClientQuery {
+    label?:string;
+}
 
 export interface IAccount extends IEntity {
     label:string;

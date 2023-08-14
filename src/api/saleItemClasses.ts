@@ -1,7 +1,8 @@
-import { Entity } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Entity, IQueryResult, IQuery } from "./base";
 
-import { Sale } from "./saleClasses";
-import { Item } from "./itemClasses";
+import { SaleView } from "./saleClasses";
+import { ItemView } from "./itemClasses";
 
 export class Saleitem extends Entity {
     sale_id:string;

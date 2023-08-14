@@ -1,6 +1,6 @@
 import express from "express";
 import { ICustomerCreate, ICustomerUpdate, ICustomerPartial, ICustomerView } from "./customerInterfaces";
-import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IEntity } from "./base";
+import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IDataQuery, IEntity } from "./base";
 import { CustomerBusiness } from "./customerBusiness";
 
 export const customerRouter = express.Router();
@@ -12,14 +12,26 @@ const context = new Context(env);
 const business = new CustomerBusiness(context);
 
 customerRouter.get<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
-    //TODO: check for error
-    const results = await business.getAll() as IQueryResult<IQuery, ICustomerView>;
-    const message = {
-        success: true,
-        message: "successful",
-        data: results
-    };
-    res.json(message);
+
+    var query:IDataQuery;
+
+    try {
+        query = business.convertToDataQuery(req.query);
+    } catch (err) {
+        return res.status(400).json({ success: false, message: `Bad query for customer: ${err}` });
+    }
+
+    try {
+        const results = await business.getAll(query) as IQueryResult<IQuery, ICustomerView>;
+        const message = {
+            success: true,
+            message: "successful",
+            data: results
+        };
+        return res.json(message);
+    } catch (err) {
+        return res.status(500).json({ success: false, message: `Could not retrieve customer records: ${err}` });
+    }    
 });
 
 customerRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
@@ -63,17 +75,17 @@ customerRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) =
 
 customerRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
     const id = (req.params as IEntity).id;
-    const viewEntity = await business.getById(id) as ICustomerView;
-    if (viewEntity == null) {
-        res.status(404).json({ success: false, message: "customer entity not found" });
-        return;
+    try {
+        const viewEntity = await business.getById(id, 2) as ICustomerView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) { //TODO: a meaningful error code should explain what happened so we can either return 404, 403, or 500.
+        return res.status(404).json({ success: false, message: "customer entity not found" });
     }
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
 });
 
 customerRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

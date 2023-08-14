@@ -1,7 +1,8 @@
 
 //import { Role, RoleCreate, RoleUpdate, RolePartial, RoleView } from "./roleClasses"
 import { IRoleCreate, IRoleUpdate, IRolePartial, IRoleView } from "./roleInterfaces";
-import { IQueryResult, IQuery, Context, Business, Operator, ICondition, ISort } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
 import { randomUUID } from "crypto";
 
 import { RolepermissionBusiness } from "./rolePermissionBusiness";
@@ -42,9 +43,15 @@ export class RoleBusiness extends Business<IRoleView> {
     "type": "string"
   }
 };
+    override queryProperties: any = {
+  "name": {
+    "required": false,
+    "type": "string"
+  }
+};
     
-    override async getAll(where:ICondition[] = [], sort:ISort[] = []):Promise<IQueryResult<IQuery, IRoleView>> {
-        return super.getAll(where, sort) as Promise<IQueryResult<IQuery, IRoleView>>;
+    override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IRoleView>> {
+        return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IRoleView>>;
     }
 
     override async create(role:IRoleCreate):Promise<IRoleView> {        
@@ -54,12 +61,19 @@ export class RoleBusiness extends Business<IRoleView> {
         return super.create(role) as Promise<IRoleView>;
     }
 
-    override async getById(id:string):Promise<IRoleView> {
+    override async getById(id:string, maxDepth:number = 1):Promise<IRoleView> {
         const role = await super.getById(id);
 
-        
+        maxDepth--;
 
-        role.rolePermissions = (await new RolepermissionBusiness(this.context).getAll([ { column: 'role_id', operator: Operator.Equals, value: role.id } as ICondition])).result;
+        
+        
+        if (maxDepth) {
+          var queryRolepermission = { where: [ { column: 'role_id', operator: Operator.Equals, value: role.id } as ICondition] } as IDataQuery;
+          role.rolePermissions = (await new RolepermissionBusiness(this.context).getAll(queryRolepermission, maxDepth));
+        
+          maxDepth--;
+        }
 
         return role;    
     }

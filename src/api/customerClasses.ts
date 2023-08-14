@@ -1,7 +1,8 @@
-import { Entity } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Entity, IQueryResult, IQuery } from "./base";
 
-import { Currency } from "./currencyClasses";
-import { Sale } from "./saleClasses";
+import { SaleView } from "./saleClasses";
+import { CurrencyView } from "./currencyClasses";
 
 export class Customer extends Entity {
     name:string;
@@ -42,5 +43,5 @@ export class CustomerView extends Entity {
     currency_id?:string;
     currency?:CurrencyView;
     payment_term?:number;
-    sales?:SaleView[];
+    sales?:IQueryResult<IQuery, SaleView>;
 }

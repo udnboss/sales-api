@@ -1,6 +1,6 @@
 import express from "express";
 import { IUserCreate, IUserUpdate, IUserPartial, IUserView } from "./userInterfaces";
-import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IEntity } from "./base";
+import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IDataQuery, IEntity } from "./base";
 import { UserBusiness } from "./userBusiness";
 
 export const userRouter = express.Router();
@@ -12,14 +12,26 @@ const context = new Context(env);
 const business = new UserBusiness(context);
 
 userRouter.get<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
-    //TODO: check for error
-    const results = await business.getAll() as IQueryResult<IQuery, IUserView>;
-    const message = {
-        success: true,
-        message: "successful",
-        data: results
-    };
-    res.json(message);
+
+    var query:IDataQuery;
+
+    try {
+        query = business.convertToDataQuery(req.query);
+    } catch (err) {
+        return res.status(400).json({ success: false, message: `Bad query for user: ${err}` });
+    }
+
+    try {
+        const results = await business.getAll(query) as IQueryResult<IQuery, IUserView>;
+        const message = {
+            success: true,
+            message: "successful",
+            data: results
+        };
+        return res.json(message);
+    } catch (err) {
+        return res.status(500).json({ success: false, message: `Could not retrieve user records: ${err}` });
+    }    
 });
 
 userRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
@@ -63,17 +75,17 @@ userRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
 
 userRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
     const id = (req.params as IEntity).id;
-    const viewEntity = await business.getById(id) as IUserView;
-    if (viewEntity == null) {
-        res.status(404).json({ success: false, message: "user entity not found" });
-        return;
+    try {
+        const viewEntity = await business.getById(id, 2) as IUserView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) { //TODO: a meaningful error code should explain what happened so we can either return 404, 403, or 500.
+        return res.status(404).json({ success: false, message: "user entity not found" });
     }
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
 });
 
 userRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

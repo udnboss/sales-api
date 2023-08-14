@@ -1,6 +1,6 @@
 import express from "express";
 import { IRoleCreate, IRoleUpdate, IRolePartial, IRoleView } from "./roleInterfaces";
-import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IEntity } from "./base";
+import { Environment, Context, MessageResponse, ErrorResponse, IQueryResult, IQuery, IDataQuery, IEntity } from "./base";
 import { RoleBusiness } from "./roleBusiness";
 
 export const roleRouter = express.Router();
@@ -12,14 +12,26 @@ const context = new Context(env);
 const business = new RoleBusiness(context);
 
 roleRouter.get<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
-    //TODO: check for error
-    const results = await business.getAll() as IQueryResult<IQuery, IRoleView>;
-    const message = {
-        success: true,
-        message: "successful",
-        data: results
-    };
-    res.json(message);
+
+    var query:IDataQuery;
+
+    try {
+        query = business.convertToDataQuery(req.query);
+    } catch (err) {
+        return res.status(400).json({ success: false, message: `Bad query for role: ${err}` });
+    }
+
+    try {
+        const results = await business.getAll(query) as IQueryResult<IQuery, IRoleView>;
+        const message = {
+            success: true,
+            message: "successful",
+            data: results
+        };
+        return res.json(message);
+    } catch (err) {
+        return res.status(500).json({ success: false, message: `Could not retrieve role records: ${err}` });
+    }    
 });
 
 roleRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
@@ -63,17 +75,17 @@ roleRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
 
 roleRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
     const id = (req.params as IEntity).id;
-    const viewEntity = await business.getById(id) as IRoleView;
-    if (viewEntity == null) {
-        res.status(404).json({ success: false, message: "role entity not found" });
-        return;
+    try {
+        const viewEntity = await business.getById(id, 2) as IRoleView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) { //TODO: a meaningful error code should explain what happened so we can either return 404, 403, or 500.
+        return res.status(404).json({ success: false, message: "role entity not found" });
     }
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
 });
 
 roleRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

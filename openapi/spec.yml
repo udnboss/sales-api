@@ -70,6 +70,11 @@ components:
         label:
           type: string
       type: object
+    accountQuery:
+      properties:
+        label:
+          type: string
+      type: object
     accountUpdate:
       properties:
         account_address:
@@ -143,6 +148,11 @@ components:
         category_id:
           format: uuid
           type: string
+        name:
+          type: string
+      type: object
+    categoryQuery:
+      properties:
         name:
           type: string
       type: object
@@ -246,6 +256,11 @@ components:
         trn:
           type: string
       type: object
+    companyQuery:
+      properties:
+        name:
+          type: string
+      type: object
     companyUpdate:
       properties:
         address:
@@ -328,6 +343,11 @@ components:
         symbol:
           type: string
       type: object
+    currencyQuery:
+      properties:
+        name:
+          type: string
+      type: object
     currencyUpdate:
       properties:
         id:
@@ -395,6 +415,11 @@ components:
           type: string
         payment_term:
           type: integer
+      type: object
+    customerQuery:
+      properties:
+        name:
+          type: string
       type: object
     customerUpdate:
       properties:
@@ -464,6 +489,11 @@ components:
         name:
           type: string
       type: object
+    itemQuery:
+      properties:
+        name:
+          type: string
+      type: object
     itemUpdate:
       properties:
         category_id:
@@ -521,6 +551,12 @@ components:
           type: string
         password:
           format: password
+          type: string
+      type: object
+    loginQuery:
+      properties:
+        email:
+          format: email
           type: string
       type: object
     loginUpdate:
@@ -587,6 +623,11 @@ components:
           type: string
         id:
           type: string
+        name:
+          type: string
+      type: object
+    permissionQuery:
+      properties:
         name:
           type: string
       type: object
@@ -686,6 +727,9 @@ components:
         role_id:
           type: string
       type: object
+    rolePermissionQuery:
+      properties: {}
+      type: object
     rolePermissionUpdate:
       properties:
         id:
@@ -712,6 +756,11 @@ components:
         role:
           $ref: '#/components/schemas/roleView'
         role_id:
+          type: string
+      type: object
+    roleQuery:
+      properties:
+        name:
           type: string
       type: object
     roleUpdate:
@@ -873,6 +922,9 @@ components:
           format: uuid
           type: string
       type: object
+    saleItemQuery:
+      properties: {}
+      type: object
     saleItemUpdate:
       properties:
         description:
@@ -940,6 +992,14 @@ components:
         reference_date:
           format: date
           type: string
+      type: object
+    saleQuery:
+      properties:
+        date:
+          format: date
+          type: string
+        number:
+          type: integer
       type: object
     saleUpdate:
       properties:
@@ -1065,6 +1125,14 @@ components:
         name:
           type: string
       type: object
+    userQuery:
+      properties:
+        email:
+          format: email
+          type: string
+        name:
+          type: string
+      type: object
     userUpdate:
       properties:
         email:
@@ -1146,6 +1214,12 @@ paths:
     get:
       description: get all account entities
       operationId: getAccounts
+      parameters:
+      - description: Filter Accounts by label
+        in: query
+        name: label
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1301,6 +1375,12 @@ paths:
     get:
       description: get all category entities
       operationId: getCategories
+      parameters:
+      - description: Filter Categories by name
+        in: query
+        name: name
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1456,6 +1536,12 @@ paths:
     get:
       description: get all company entities
       operationId: getCompanies
+      parameters:
+      - description: Filter Companies by name
+        in: query
+        name: name
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1611,6 +1697,12 @@ paths:
     get:
       description: get all currency entities
       operationId: getCurrencies
+      parameters:
+      - description: Filter Currencies by name
+        in: query
+        name: name
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1766,6 +1858,12 @@ paths:
     get:
       description: get all customer entities
       operationId: getCustomers
+      parameters:
+      - description: Filter Customers by name
+        in: query
+        name: name
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1921,6 +2019,12 @@ paths:
     get:
       description: get all item entities
       operationId: getItems
+      parameters:
+      - description: Filter Items by name
+        in: query
+        name: name
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2076,6 +2180,12 @@ paths:
     get:
       description: get all login entities
       operationId: getLogins
+      parameters:
+      - description: Filter Logins by email
+        in: query
+        name: email
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2231,6 +2341,12 @@ paths:
     get:
       description: get all permission entities
       operationId: getPermissions
+      parameters:
+      - description: Filter Permissions by name
+        in: query
+        name: name
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2386,6 +2502,17 @@ paths:
     get:
       description: get all rolePermission entities
       operationId: getRolepermissions
+      parameters:
+      - description: Filter Rolepermissions by permission.name
+        in: query
+        name: permission.name
+        schema:
+          type: string
+      - description: Filter Rolepermissions by role.name
+        in: query
+        name: role.name
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2541,6 +2668,12 @@ paths:
     get:
       description: get all role entities
       operationId: getRoles
+      parameters:
+      - description: Filter Roles by name
+        in: query
+        name: name
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2696,6 +2829,12 @@ paths:
     get:
       description: get all saleItem entities
       operationId: getSaleitems
+      parameters:
+      - description: Filter Saleitems by item.name
+        in: query
+        name: item.name
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -2851,6 +2990,17 @@ paths:
     get:
       description: get all sale entities
       operationId: getSales
+      parameters:
+      - description: Filter Sales by date
+        in: query
+        name: date
+        schema:
+          type: string
+      - description: Filter Sales by number
+        in: query
+        name: number
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -3006,6 +3156,17 @@ paths:
     get:
       description: get all user entities
       operationId: getUsers
+      parameters:
+      - description: Filter Users by email
+        in: query
+        name: email
+        schema:
+          type: string
+      - description: Filter Users by name
+        in: query
+        name: name
+        schema:
+          type: string
       responses:
         '200':
           content:

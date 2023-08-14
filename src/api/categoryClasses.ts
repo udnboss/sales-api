@@ -1,6 +1,7 @@
-import { Entity } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Entity, IQueryResult, IQuery } from "./base";
 
-import { Item } from "./itemClasses";
+import { ItemView } from "./itemClasses";
 
 export class Category extends Entity {
     name:string;
@@ -26,5 +27,5 @@ export class CategoryView extends Entity {
     name?:string;
     category_id?:string;
     category?:CategoryView;
-    items?:ItemView[];
+    items?:IQueryResult<IQuery, ItemView>;
 }
