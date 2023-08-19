@@ -63,14 +63,18 @@ roleRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IRoleView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IRoleView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "role entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 roleRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ roleRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => 
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IRoleView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IRoleView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "role entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 roleRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ roleRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) =
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IRoleView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IRoleView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "role entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 roleRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

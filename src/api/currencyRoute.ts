@@ -63,14 +63,18 @@ currencyRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) =
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICurrencyView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICurrencyView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "currency entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 currencyRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ currencyRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res)
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICurrencyView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICurrencyView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "currency entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 currencyRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ currencyRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, re
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICurrencyView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICurrencyView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "currency entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 currencyRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

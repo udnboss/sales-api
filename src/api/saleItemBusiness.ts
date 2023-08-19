@@ -3,10 +3,11 @@
 import { ISaleitemCreate, ISaleitemUpdate, ISaleitemPartial, ISaleitemView } from "./saleItemInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
-import { SaleBusiness } from "./saleBusiness";
 import { ItemBusiness } from "./itemBusiness";
+import { SaleBusiness } from "./saleBusiness";
 
 export class SaleitemBusiness extends Business<ISaleitemView> {
 
@@ -32,7 +33,7 @@ export class SaleitemBusiness extends Business<ISaleitemView> {
   },
   "quantity": {
     "required": true,
-    "type": "integer",
+    "type": "number",
     "operator": "bt"
   },
   "price": {
@@ -59,7 +60,7 @@ export class SaleitemBusiness extends Business<ISaleitemView> {
   },
   "quantity": {
     "required": true,
-    "type": "integer",
+    "type": "number",
     "operator": "bt"
   },
   "price": {
@@ -86,7 +87,7 @@ export class SaleitemBusiness extends Business<ISaleitemView> {
   },
   "quantity": {
     "required": false,
-    "type": "integer",
+    "type": "number",
     "operator": "bt"
   },
   "price": {
@@ -118,24 +119,30 @@ export class SaleitemBusiness extends Business<ISaleitemView> {
   },
   "quantity": {
     "required": false,
-    "type": "integer",
+    "type": "number",
     "operator": "bt"
   },
   "price": {
     "required": false,
     "type": "number",
     "operator": "bt"
+  },
+  "total": {
+    "required": false,
+    "type": "number",
+    "operator": "bt"
   }
 };
+    override sortableProperties: any = ["item.name"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ISaleitemView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ISaleitemView>>;
     }
 
     override async create(saleItem:ISaleitemCreate):Promise<ISaleitemView> {        
-        if (!saleItem.id) {
-            saleItem.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        saleItem.id = randomUUID();
+
         return super.create(saleItem) as Promise<ISaleitemView>;
     }
 

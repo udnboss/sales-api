@@ -63,14 +63,18 @@ companyRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) =>
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICompanyView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICompanyView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "company entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 companyRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ companyRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) 
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICompanyView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICompanyView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "company entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 companyRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ companyRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICompanyView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICompanyView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "company entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 companyRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

@@ -10,6 +10,7 @@ export interface ISaleitemClientQuery extends IClientQuery {
     description?:string;
     quantity?:number;
     price?:number;
+    total?:number;
 }
 
 export interface ISaleitem extends IEntity {
@@ -18,6 +19,7 @@ export interface ISaleitem extends IEntity {
     description?:string;
     quantity:number;
     price:number;
+    total?:number;
 }
 
 export interface ISaleitemCreate extends IEntity {
@@ -50,6 +52,7 @@ export interface ISaleitemView extends IEntity {
     description?:string;
     quantity?:number;
     price?:number;
+    total?:number;
     sale?:ISaleView;
     item?:IItemView;
 }

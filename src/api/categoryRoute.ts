@@ -63,14 +63,18 @@ categoryRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) =
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICategoryView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICategoryView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "category entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 categoryRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ categoryRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res)
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICategoryView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICategoryView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "category entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 categoryRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ categoryRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, re
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICategoryView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICategoryView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "category entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 categoryRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

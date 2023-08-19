@@ -3,13 +3,14 @@
 import { ISaleCreate, ISaleUpdate, ISalePartial, ISaleView } from "./saleInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
-import { AccountBusiness } from "./accountBusiness";
-import { CurrencyBusiness } from "./currencyBusiness";
-import { CompanyBusiness } from "./companyBusiness";
-import { SaleitemBusiness } from "./saleItemBusiness";
 import { CustomerBusiness } from "./customerBusiness";
+import { CompanyBusiness } from "./companyBusiness";
+import { CurrencyBusiness } from "./currencyBusiness";
+import { AccountBusiness } from "./accountBusiness";
+import { SaleitemBusiness } from "./saleItemBusiness";
 
 export class SaleBusiness extends Business<ISaleView> {
 
@@ -196,7 +197,7 @@ export class SaleBusiness extends Business<ISaleView> {
   },
   "number": {
     "required": false,
-    "type": "integer",
+    "type": "number",
     "operator": "bt"
   },
   "date": {
@@ -205,6 +206,11 @@ export class SaleBusiness extends Business<ISaleView> {
     "operator": "bt"
   },
   "total": {
+    "required": false,
+    "type": "number",
+    "operator": "bt"
+  },
+  "totalItems": {
     "required": false,
     "type": "number",
     "operator": "bt"
@@ -230,15 +236,16 @@ export class SaleBusiness extends Business<ISaleView> {
     "operator": "bt"
   }
 };
+    override sortableProperties: any = ["number", "date", "customer.name"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ISaleView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ISaleView>>;
     }
 
     override async create(sale:ISaleCreate):Promise<ISaleView> {        
-        if (!sale.id) {
-            sale.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        sale.id = randomUUID();
+
         return super.create(sale) as Promise<ISaleView>;
     }
 

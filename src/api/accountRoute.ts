@@ -63,14 +63,18 @@ accountRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) =>
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IAccountView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IAccountView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "account entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 accountRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ accountRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) 
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IAccountView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IAccountView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "account entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 accountRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ accountRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IAccountView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IAccountView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "account entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 accountRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

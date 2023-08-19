@@ -3,6 +3,7 @@
 import { ICompanyCreate, ICompanyUpdate, ICompanyPartial, ICompanyView } from "./companyInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
 
@@ -166,15 +167,16 @@ export class CompanyBusiness extends Business<ICompanyView> {
     "operator": "like"
   }
 };
+    override sortableProperties: any = ["name"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ICompanyView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ICompanyView>>;
     }
 
     override async create(company:ICompanyCreate):Promise<ICompanyView> {        
-        if (!company.id) {
-            company.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        company.id = randomUUID();
+
         return super.create(company) as Promise<ICompanyView>;
     }
 

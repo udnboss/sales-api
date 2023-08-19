@@ -3,6 +3,7 @@
 import { ICategoryCreate, ICategoryUpdate, ICategoryPartial, ICategoryView } from "./categoryInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
 import { ItemBusiness } from "./itemBusiness";
@@ -66,15 +67,16 @@ export class CategoryBusiness extends Business<ICategoryView> {
     "operator": "in"
   }
 };
+    override sortableProperties: any = ["name", "category.name"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ICategoryView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ICategoryView>>;
     }
 
     override async create(category:ICategoryCreate):Promise<ICategoryView> {        
-        if (!category.id) {
-            category.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        category.id = randomUUID();
+
         return super.create(category) as Promise<ICategoryView>;
     }
 

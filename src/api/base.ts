@@ -132,7 +132,7 @@ export abstract class Business<TOutput extends IEntity> implements IBusiness<TOu
     updateProperties: { id: { type: "string", required: true } };
     partialProperties: { id: { type: "string", required: false } };
     queryProperties: { id: { type: "string", required: false } }; 
-    sortableProperties:string[] = []; //TODO: populate it
+    sortableProperties:string[] = [];
     private db: IDBProvider;
     context: Context;
     entityName: string;
@@ -308,31 +308,58 @@ export abstract class Business<TOutput extends IEntity> implements IBusiness<TOu
         return dbResult.result[0] as TOutput;
     }
 
-    async create(entity: IEntity): Promise<TOutput> {        
-        const dbResult = await this.db.dbInsert(this.entityName, this.idProperty, entity as IEntity) as TOutput;
-        return dbResult;
+    async create(entity: IEntity): Promise<TOutput> {       
+        await this.db.dbBegin(); 
+        try {
+            const dbResult = await this.db.dbInsert(this.entityName, this.idProperty, entity as IEntity) as TOutput;            
+            await this.db.dbCommit();
+            return dbResult;
+        } catch (err) {
+            await this.db.dbRollback();
+            throw err;
+        }        
     }
 
     async update(id: string, entity: IEntity): Promise<TOutput> {
-        const dbResult = await this.db.dbUpdate(this.entityName, this.idProperty, id, entity as IEntity) as TOutput;
-        return dbResult;
+        await this.db.dbBegin(); 
+        try {
+            const dbResult = await this.db.dbUpdate(this.entityName, this.idProperty, id, entity as IEntity) as TOutput;
+            await this.db.dbCommit();
+            return dbResult;
+        } catch (err) {
+            await this.db.dbRollback();
+            throw err;
+        } 
     }
 
     async modify(id: string, entity: IEntity): Promise<TOutput> {
-        const dbResult = await this.db.dbUpdate(this.entityName, this.idProperty, id, entity as IEntity) as TOutput;
-        return dbResult;
+        await this.db.dbBegin(); 
+        try {
+            const dbResult = await this.db.dbUpdate(this.entityName, this.idProperty, id, entity as IEntity) as TOutput;
+            await this.db.dbCommit();
+            return dbResult;
+        } catch (err) {
+            await this.db.dbRollback();
+            throw err;
+        }
     }
 
     async delete(id: string): Promise<TOutput> {
-        const entity = await this.getById(id) as TOutput;
-        const deleted = await this.db.dbDelete(this.entityName, this.idProperty, id);
-        if (!deleted) {
-            throw new Error("Could not Delete");
-        }
-        return entity;
+        await this.db.dbBegin(); 
+        try {
+            const entity = await this.getById(id) as TOutput;
+            const deleted = await this.db.dbDelete(this.entityName, this.idProperty, id);
+            if (!deleted) {
+                throw new Error("Could not Delete");
+            }
+            
+            await this.db.dbCommit();
+            return entity;
+        } catch (err) {
+            await this.db.dbRollback();
+            throw err;
+        }        
     }
-
-
 }
 
 export enum DBProviderType {
@@ -514,7 +541,7 @@ class DBJSONProvider implements IDBProvider {
             });
         }
 
-        //TODO: offset and limit
+        //TODO: DBJSON offset and limit
         const page = limit > 0 ? ((offset / limit) || 1) : 1;
 
         return { result: results, count: results.length, total: results.length, query: { page: page, pageSize: limit } } as IQueryResult<IQuery, IEntity>;
@@ -781,9 +808,9 @@ class DBSqliteProvider implements IDBProvider {
                 if (err) {
                     return reject(err.message);
                 }
-                if (!(db as any).changes) {
-                    return reject("Nothing inserted");
-                }
+                // if (!(db as any).changes) {
+                //     return reject("Nothing inserted");
+                // }
 
                 const newid = record.id as string;
                 const updatedResult = await this.dbSelect(table, [{ column: idCol, operator: Operator.Equals, value: newid } as ICondition], [], 1);
@@ -803,9 +830,9 @@ class DBSqliteProvider implements IDBProvider {
                 if (err) {
                     return reject(err.message);
                 }
-                if (!(db as any).changes) {
-                    return reject("Nothing deleted");
-                }
+                // if (!(db as any).changes) {
+                //     return reject("Nothing deleted");
+                // }
                 return resolve(true);
             });
         });
@@ -824,9 +851,9 @@ class DBSqliteProvider implements IDBProvider {
                     return reject(err.message);
                 }
 
-                if (!(db as any).changes) {
-                    return reject("Nothing Updated");
-                }
+                // if (!(db as any).changes) {
+                //     return reject("Nothing Updated");
+                // }
 
                 const newid = record.id || id as string;
                 const updatedResult = await this.dbSelect(table, [{ column: idCol, operator: Operator.Equals, value: newid } as ICondition], [], 1);

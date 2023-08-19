@@ -3,10 +3,11 @@
 import { ICustomerCreate, ICustomerUpdate, ICustomerPartial, ICustomerView } from "./customerInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
-import { CurrencyBusiness } from "./currencyBusiness";
 import { SaleBusiness } from "./saleBusiness";
+import { CurrencyBusiness } from "./currencyBusiness";
 
 export class CustomerBusiness extends Business<ICustomerView> {
 
@@ -37,7 +38,7 @@ export class CustomerBusiness extends Business<ICustomerView> {
   },
   "payment_term": {
     "required": false,
-    "type": "integer",
+    "type": "number",
     "operator": "bt"
   }
 };
@@ -64,7 +65,7 @@ export class CustomerBusiness extends Business<ICustomerView> {
   },
   "payment_term": {
     "required": false,
-    "type": "integer",
+    "type": "number",
     "operator": "bt"
   }
 };
@@ -91,7 +92,7 @@ export class CustomerBusiness extends Business<ICustomerView> {
   },
   "payment_term": {
     "required": false,
-    "type": "integer",
+    "type": "number",
     "operator": "bt"
   }
 };
@@ -123,19 +124,20 @@ export class CustomerBusiness extends Business<ICustomerView> {
   },
   "payment_term": {
     "required": false,
-    "type": "integer",
+    "type": "number",
     "operator": "bt"
   }
 };
+    override sortableProperties: any = ["name"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ICustomerView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ICustomerView>>;
     }
 
     override async create(customer:ICustomerCreate):Promise<ICustomerView> {        
-        if (!customer.id) {
-            customer.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        customer.id = randomUUID();
+
         return super.create(customer) as Promise<ICustomerView>;
     }
 

@@ -124,11 +124,12 @@ create table [sale] (
   , company_id text not null
   , account_id text not null
   , customer_id text not null
-  , place text
-  , number int
-  , date text not null
   , currency_id text not null
-  , total real not null
+  , place text
+  , number int IDENTITY(1,1)
+  , date text not null
+  , total real default 0
+  , totalItems int default 0
   , reference text
   , confirmed int not null
   , reference_date text
@@ -150,6 +151,7 @@ create table [saleItem] (
   , description text
   , quantity int not null
   , price real not null
+  , total real
   , primary key (id)
   , unique (sale_id, item_id)
   , foreign key (sale_id) references sale(id) on delete cascade on delete cascade
@@ -196,3 +198,22 @@ create index ix_sale_currency_id on sale (currency_id);
 
 create index ix_saleItem_sale_id on saleItem (sale_id);
 create index ix_saleItem_item_id on saleItem (item_id);
+
+/* TRIGGERS */
+/* after create or update, set the saleItem.total then set sale.total to the sum */
+create trigger tr_saleItem_after_insert_update_total
+after insert on [saleItem]
+begin
+    update [saleItem] set [total] = quantity * price where id = new.id;
+
+    update [sale] set [total] = (select ifnull(sum(total), 0) from [saleItem] where [sale_id] = [sale].[id]), [totalItems] = (select ifnull(count(id), 0) from [saleItem] where [sale_id] = [sale].[id]) where [id] = (select [sale_id] from [saleItem] where id = new.id);
+end;
+
+/* after create or update, set the saleItem.total then set sale.total to the sum */
+create trigger tr_saleItem_after_update_update_total
+after update on [saleItem]
+begin
+    update [saleItem] set [total] = quantity * price where id = new.id;
+
+    update [sale] set [total] = (select ifnull(sum(total), 0) from [saleItem] where [sale_id] = [sale].[id]), [totalItems] = (select ifnull(count(id), 0) from [saleItem] where [sale_id] = [sale].[id]) where [id] = (select [sale_id] from [saleItem] where id = new.id);
+end;

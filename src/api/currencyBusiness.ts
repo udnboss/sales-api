@@ -3,6 +3,7 @@
 import { ICurrencyCreate, ICurrencyUpdate, ICurrencyPartial, ICurrencyView } from "./currencyInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
 
@@ -81,15 +82,16 @@ export class CurrencyBusiness extends Business<ICurrencyView> {
     "operator": "like"
   }
 };
+    override sortableProperties: any = ["name"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ICurrencyView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ICurrencyView>>;
     }
 
     override async create(currency:ICurrencyCreate):Promise<ICurrencyView> {        
-        if (!currency.id) {
-            currency.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        
+
         return super.create(currency) as Promise<ICurrencyView>;
     }
 

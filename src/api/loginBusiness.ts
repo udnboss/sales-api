@@ -3,6 +3,7 @@
 import { ILoginCreate, ILoginUpdate, ILoginPartial, ILoginView } from "./loginInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
 
@@ -66,15 +67,16 @@ export class LoginBusiness extends Business<ILoginView> {
     "operator": "like"
   }
 };
+    override sortableProperties: any = ["email"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, ILoginView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, ILoginView>>;
     }
 
     override async create(login:ILoginCreate):Promise<ILoginView> {        
-        if (!login.id) {
-            login.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        login.id = randomUUID();
+
         return super.create(login) as Promise<ILoginView>;
     }
 

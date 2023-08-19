@@ -63,14 +63,18 @@ rolePermissionRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, 
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IRolepermissionView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IRolepermissionView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "rolePermission entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 rolePermissionRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ rolePermissionRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IRolepermissionView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IRolepermissionView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "rolePermission entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 rolePermissionRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ rolePermissionRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (r
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IRolepermissionView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IRolepermissionView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "rolePermission entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 rolePermissionRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

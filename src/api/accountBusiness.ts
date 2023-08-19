@@ -3,6 +3,7 @@
 import { IAccountCreate, IAccountUpdate, IAccountPartial, IAccountView } from "./accountInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
 
@@ -166,15 +167,16 @@ export class AccountBusiness extends Business<IAccountView> {
     "operator": "like"
   }
 };
+    override sortableProperties: any = ["label"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IAccountView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IAccountView>>;
     }
 
     override async create(account:IAccountCreate):Promise<IAccountView> {        
-        if (!account.id) {
-            account.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        account.id = randomUUID();
+
         return super.create(account) as Promise<IAccountView>;
     }
 

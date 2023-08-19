@@ -143,6 +143,17 @@ components:
         id:
           format: uuid
           type: string
+        items:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/itemView'
+              type: array
+            total:
+              type: integer
+          type: object
         name:
           type: string
       required:
@@ -153,6 +164,17 @@ components:
         category_id:
           format: uuid
           type: string
+        items:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/itemView'
+              type: array
+            total:
+              type: integer
+          type: object
         name:
           type: string
       required:
@@ -163,6 +185,17 @@ components:
         category_id:
           format: uuid
           type: string
+        items:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/itemView'
+              type: array
+            total:
+              type: integer
+          type: object
         name:
           type: string
       type: object
@@ -182,6 +215,17 @@ components:
         category_id:
           format: uuid
           type: string
+        items:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/itemView'
+              type: array
+            total:
+              type: integer
+          type: object
         name:
           type: string
       required:
@@ -198,9 +242,16 @@ components:
           format: uuid
           type: string
         items:
-          items:
-            $ref: '#/components/schemas/itemView'
-          type: array
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/itemView'
+              type: array
+            total:
+              type: integer
+          type: object
         name:
           type: string
       type: object
@@ -426,6 +477,17 @@ components:
           type: string
         payment_term:
           type: integer
+        sales:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleView'
+              type: array
+            total:
+              type: integer
+          type: object
       required:
       - name
       type: object
@@ -441,6 +503,17 @@ components:
           type: string
         payment_term:
           type: integer
+        sales:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleView'
+              type: array
+            total:
+              type: integer
+          type: object
       required:
       - name
       type: object
@@ -456,6 +529,17 @@ components:
           type: string
         payment_term:
           type: integer
+        sales:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleView'
+              type: array
+            total:
+              type: integer
+          type: object
       type: object
     customerQuery:
       properties:
@@ -485,6 +569,17 @@ components:
           type: string
         payment_term:
           type: integer
+        sales:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleView'
+              type: array
+            total:
+              type: integer
+          type: object
       required:
       - name
       type: object
@@ -506,9 +601,16 @@ components:
         payment_term:
           type: integer
         sales:
-          items:
-            $ref: '#/components/schemas/saleView'
-          type: array
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleView'
+              type: array
+            total:
+              type: integer
+          type: object
       type: object
     item:
       properties:
@@ -657,6 +759,17 @@ components:
           type: string
         name:
           type: string
+        roles:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       required:
       - id
       - name
@@ -673,6 +786,17 @@ components:
           type: string
         name:
           type: string
+        roles:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       required:
       - id
       - name
@@ -689,6 +813,17 @@ components:
           type: string
         name:
           type: string
+        roles:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       type: object
     permissionQuery:
       properties:
@@ -711,6 +846,17 @@ components:
           type: string
         name:
           type: string
+        roles:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       required:
       - id
       - name
@@ -728,9 +874,16 @@ components:
         name:
           type: string
         roles:
-          items:
-            $ref: '#/components/schemas/rolePermissionView'
-          type: array
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       type: object
     role:
       properties:
@@ -738,6 +891,17 @@ components:
           type: string
         name:
           type: string
+        rolePermissions:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       required:
       - id
       - name
@@ -748,6 +912,17 @@ components:
           type: string
         name:
           type: string
+        rolePermissions:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       required:
       - id
       - name
@@ -758,6 +933,17 @@ components:
           type: string
         name:
           type: string
+        rolePermissions:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       type: object
     rolePermission:
       properties:
@@ -848,6 +1034,17 @@ components:
           type: string
         name:
           type: string
+        rolePermissions:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       required:
       - id
       - name
@@ -859,9 +1056,16 @@ components:
         name:
           type: string
         rolePermissions:
-          items:
-            $ref: '#/components/schemas/rolePermissionView'
-          type: array
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/rolePermissionView'
+              type: array
+            total:
+              type: integer
+          type: object
       type: object
     sale:
       properties:
@@ -887,6 +1091,17 @@ components:
         id:
           format: uuid
           type: string
+        items:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleItemView'
+              type: array
+            total:
+              type: integer
+          type: object
         number:
           type: integer
         place:
@@ -898,13 +1113,14 @@ components:
           type: string
         total:
           type: number
+        totalItems:
+          type: integer
       required:
       - company_id
       - account_id
       - customer_id
       - currency_id
       - date
-      - total
       - confirmed
       type: object
     saleCreate:
@@ -928,6 +1144,17 @@ components:
         due_date:
           format: date
           type: string
+        items:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleItemView'
+              type: array
+            total:
+              type: integer
+          type: object
         place:
           type: string
         reference:
@@ -960,6 +1187,8 @@ components:
         sale_id:
           format: uuid
           type: string
+        total:
+          type: number
       required:
       - sale_id
       - item_id
@@ -1018,6 +1247,8 @@ components:
         sale_id:
           format: uuid
           type: string
+        total:
+          type: number
       type: object
     saleItemUpdate:
       properties:
@@ -1060,6 +1291,8 @@ components:
         sale_id:
           format: uuid
           type: string
+        total:
+          type: number
       type: object
     salePartial:
       properties:
@@ -1079,6 +1312,17 @@ components:
         due_date:
           format: date
           type: string
+        items:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleItemView'
+              type: array
+            total:
+              type: integer
+          type: object
         place:
           type: string
         reference:
@@ -1122,6 +1366,8 @@ components:
           type: string
         total:
           type: number
+        totalItems:
+          type: integer
       type: object
     saleUpdate:
       properties:
@@ -1141,6 +1387,17 @@ components:
         due_date:
           format: date
           type: string
+        items:
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleItemView'
+              type: array
+            total:
+              type: integer
+          type: object
         place:
           type: string
         reference:
@@ -1188,9 +1445,16 @@ components:
           format: uuid
           type: string
         items:
-          items:
-            $ref: '#/components/schemas/saleItemView'
-          type: array
+          properties:
+            count:
+              type: integer
+            result:
+              items:
+                $ref: '#/components/schemas/saleItemView'
+              type: array
+            total:
+              type: integer
+          type: object
         number:
           type: integer
         place:
@@ -1202,6 +1466,8 @@ components:
           type: string
         total:
           type: number
+        totalItems:
+          type: integer
       type: object
     user:
       properties:
@@ -1353,10 +1619,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/accountView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/accountView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all account entities
       tags:
       - account
@@ -1375,9 +1694,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/accountView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new account entity
       tags:
@@ -1398,11 +1761,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/accountView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid account id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: account not found
       summary: Delete an existing account entity
       tags:
@@ -1422,11 +1840,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/accountView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid account id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: account not found
       summary: Get an existing account entity
       tags:
@@ -1454,13 +1927,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/accountView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: account not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing account entity
       tags:
@@ -1488,13 +2027,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/accountView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/accountView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: account not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing account entity
       tags:
@@ -1514,10 +2119,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/categoryView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/categoryView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all category entities
       tags:
       - category
@@ -1536,9 +2194,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/categoryView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/categoryView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new category entity
       tags:
@@ -1559,11 +2261,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/categoryView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/categoryView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid category id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: category not found
       summary: Delete an existing category entity
       tags:
@@ -1583,11 +2340,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/categoryView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/categoryView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid category id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: category not found
       summary: Get an existing category entity
       tags:
@@ -1615,13 +2427,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/categoryView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/categoryView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: category not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing category entity
       tags:
@@ -1649,13 +2527,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/categoryView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/categoryView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: category not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing category entity
       tags:
@@ -1675,10 +2619,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/companyView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/companyView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all company entities
       tags:
       - company
@@ -1697,9 +2694,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/companyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/companyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new company entity
       tags:
@@ -1720,11 +2761,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/companyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/companyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid company id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: company not found
       summary: Delete an existing company entity
       tags:
@@ -1744,11 +2840,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/companyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/companyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid company id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: company not found
       summary: Get an existing company entity
       tags:
@@ -1776,13 +2927,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/companyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/companyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: company not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing company entity
       tags:
@@ -1810,13 +3027,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/companyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/companyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: company not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing company entity
       tags:
@@ -1836,10 +3119,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/currencyView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/currencyView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all currency entities
       tags:
       - currency
@@ -1858,9 +3194,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/currencyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/currencyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new currency entity
       tags:
@@ -1881,11 +3261,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/currencyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/currencyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid currency id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: currency not found
       summary: Delete an existing currency entity
       tags:
@@ -1905,11 +3340,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/currencyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/currencyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid currency id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: currency not found
       summary: Get an existing currency entity
       tags:
@@ -1937,13 +3427,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/currencyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/currencyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: currency not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing currency entity
       tags:
@@ -1971,13 +3527,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/currencyView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/currencyView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: currency not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing currency entity
       tags:
@@ -1997,10 +3619,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/customerView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/customerView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all customer entities
       tags:
       - customer
@@ -2019,9 +3694,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/customerView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/customerView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new customer entity
       tags:
@@ -2042,11 +3761,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/customerView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/customerView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid customer id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: customer not found
       summary: Delete an existing customer entity
       tags:
@@ -2066,11 +3840,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/customerView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/customerView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid customer id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: customer not found
       summary: Get an existing customer entity
       tags:
@@ -2098,13 +3927,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/customerView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/customerView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: customer not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing customer entity
       tags:
@@ -2132,13 +4027,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/customerView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/customerView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: customer not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing customer entity
       tags:
@@ -2158,10 +4119,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/itemView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/itemView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all item entities
       tags:
       - item
@@ -2180,9 +4194,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/itemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/itemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new item entity
       tags:
@@ -2203,11 +4261,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/itemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/itemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid item id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: item not found
       summary: Delete an existing item entity
       tags:
@@ -2227,11 +4340,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/itemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/itemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid item id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: item not found
       summary: Get an existing item entity
       tags:
@@ -2259,13 +4427,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/itemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/itemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: item not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing item entity
       tags:
@@ -2293,13 +4527,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/itemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/itemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: item not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing item entity
       tags:
@@ -2319,10 +4619,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/loginView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/loginView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all login entities
       tags:
       - login
@@ -2341,9 +4694,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loginView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/loginView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new login entity
       tags:
@@ -2364,11 +4761,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loginView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/loginView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid login id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: login not found
       summary: Delete an existing login entity
       tags:
@@ -2388,11 +4840,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loginView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/loginView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid login id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: login not found
       summary: Get an existing login entity
       tags:
@@ -2420,13 +4927,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loginView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/loginView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: login not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing login entity
       tags:
@@ -2454,13 +5027,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/loginView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/loginView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: login not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing login entity
       tags:
@@ -2480,10 +5119,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/permissionView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/permissionView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all permission entities
       tags:
       - permission
@@ -2502,9 +5194,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/permissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/permissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new permission entity
       tags:
@@ -2525,11 +5261,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/permissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/permissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid permission id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: permission not found
       summary: Delete an existing permission entity
       tags:
@@ -2549,11 +5340,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/permissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/permissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid permission id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: permission not found
       summary: Get an existing permission entity
       tags:
@@ -2581,13 +5427,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/permissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/permissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: permission not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing permission entity
       tags:
@@ -2615,13 +5527,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/permissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/permissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: permission not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing permission entity
       tags:
@@ -2646,10 +5624,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/rolePermissionView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/rolePermissionView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all rolePermission entities
       tags:
       - rolePermission
@@ -2668,9 +5699,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rolePermissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/rolePermissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new rolePermission entity
       tags:
@@ -2691,11 +5766,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rolePermissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/rolePermissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid rolePermission id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: rolePermission not found
       summary: Delete an existing rolePermission entity
       tags:
@@ -2715,11 +5845,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rolePermissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/rolePermissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid rolePermission id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: rolePermission not found
       summary: Get an existing rolePermission entity
       tags:
@@ -2747,13 +5932,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rolePermissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/rolePermissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: rolePermission not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing rolePermission entity
       tags:
@@ -2781,13 +6032,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rolePermissionView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/rolePermissionView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: rolePermission not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing rolePermission entity
       tags:
@@ -2807,10 +6124,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/roleView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/roleView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all role entities
       tags:
       - role
@@ -2829,9 +6199,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/roleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new role entity
       tags:
@@ -2852,11 +6266,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/roleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid role id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: role not found
       summary: Delete an existing role entity
       tags:
@@ -2876,11 +6345,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/roleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid role id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: role not found
       summary: Get an existing role entity
       tags:
@@ -2908,13 +6432,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/roleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: role not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing role entity
       tags:
@@ -2942,13 +6532,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/roleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/roleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: role not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing role entity
       tags:
@@ -2968,10 +6624,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/saleItemView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/saleItemView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all saleItem entities
       tags:
       - saleItem
@@ -2990,9 +6699,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleItemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleItemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new saleItem entity
       tags:
@@ -3013,11 +6766,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleItemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleItemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid saleItem id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: saleItem not found
       summary: Delete an existing saleItem entity
       tags:
@@ -3037,11 +6845,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleItemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleItemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid saleItem id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: saleItem not found
       summary: Get an existing saleItem entity
       tags:
@@ -3069,13 +6932,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleItemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleItemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: saleItem not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing saleItem entity
       tags:
@@ -3103,13 +7032,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleItemView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleItemView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: saleItem not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing saleItem entity
       tags:
@@ -3119,14 +7114,14 @@ paths:
       description: get all sale entities
       operationId: getSales
       parameters:
-      - description: Filter Sales by date
-        in: query
-        name: date
-        schema:
-          type: string
       - description: Filter Sales by number
         in: query
         name: number
+        schema:
+          type: string
+      - description: Filter Sales by date
+        in: query
+        name: date
         schema:
           type: string
       responses:
@@ -3134,10 +7129,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/saleView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/saleView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all sale entities
       tags:
       - sale
@@ -3156,9 +7204,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new sale entity
       tags:
@@ -3179,11 +7271,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid sale id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: sale not found
       summary: Delete an existing sale entity
       tags:
@@ -3203,11 +7350,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid sale id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: sale not found
       summary: Get an existing sale entity
       tags:
@@ -3235,13 +7437,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: sale not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing sale entity
       tags:
@@ -3269,13 +7537,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saleView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/saleView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: sale not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing sale entity
       tags:
@@ -3285,14 +7619,14 @@ paths:
       description: get all user entities
       operationId: getUsers
       parameters:
-      - description: Filter Users by name
-        in: query
-        name: name
-        schema:
-          type: string
       - description: Filter Users by email
         in: query
         name: email
+        schema:
+          type: string
+      - description: Filter Users by name
+        in: query
+        name: name
         schema:
           type: string
       responses:
@@ -3300,10 +7634,63 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/userView'
-                type: array
+                properties:
+                  data:
+                    properties:
+                      count:
+                        type: integer
+                      result:
+                        items:
+                          $ref: '#/components/schemas/userView'
+                        type: array
+                      total:
+                        type: integer
+                    type: object
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Invalid Request
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
       summary: get all user entities
       tags:
       - user
@@ -3322,9 +7709,53 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/userView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: invalid input
       summary: Add a new user entity
       tags:
@@ -3345,11 +7776,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/userView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid user id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: user not found
       summary: Delete an existing user entity
       tags:
@@ -3369,11 +7855,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/userView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid user id
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: user not found
       summary: Get an existing user entity
       tags:
@@ -3401,13 +7942,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/userView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: user not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Modify an existing user entity
       tags:
@@ -3435,13 +8042,79 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userView'
+                properties:
+                  data:
+                    $ref: '#/components/schemas/userView'
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid ID
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: User not logged in
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
+          description: Forbidden/Access Denied
         '404':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: user not found
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                type: object
           description: Invalid input
       summary: Update an existing user entity
       tags:
@@ -3469,20 +8142,98 @@ paths:
             application/json:
               schema:
                 properties:
-                  accessToken:
+                  data:
                     type: string
-                  refreshToken:
+                  message:
                     type: string
-                  username:
-                    type: string
+                  success:
+                    type: boolean
           description: successful operation
         '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
           description: bad request
         '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
           description: invalid username or password
         '405':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
           description: invalid input
       summary: Perform a login attempt
+  /logout:
+    get:
+      description: Logout
+      operationId: logout
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+          description: successful operation
+      summary: Perform a logout
+  /refresh:
+    get:
+      description: Request to Refresh current access token manually
+      operationId: refreshToken
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+          description: successful operation
+        '403':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+          description: expired refresh token
+      summary: Request to Refresh current access token manually
 security:
 - cookieAccessToken: []
   cookieRefreshToken: []

@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IClientQuery, IEntity, IQuery, IQueryResult } from "./base";
 
-import { ICurrencyView } from "./currencyInterfaces";
-import { ISaleitemView } from "./saleItemInterfaces";
 import { ICompanyView } from "./companyInterfaces";
 import { ICustomerView } from "./customerInterfaces";
+import { ISaleitemView } from "./saleItemInterfaces";
 import { IAccountView } from "./accountInterfaces";
+import { ICurrencyView } from "./currencyInterfaces";
 
 export interface ISaleClientQuery extends IClientQuery {
     company_id?:string;
@@ -16,6 +16,7 @@ export interface ISaleClientQuery extends IClientQuery {
     number?:number;
     date?:string;
     total?:number;
+    totalItems?:number;
     reference?:string;
     confirmed?:boolean;
     reference_date?:string;
@@ -30,7 +31,8 @@ export interface ISale extends IEntity {
     place?:string;
     number?:number;
     date:string;
-    total:number;
+    total?:number;
+    totalItems?:number;
     reference?:string;
     confirmed:boolean;
     reference_date?:string;
@@ -83,6 +85,7 @@ export interface ISaleView extends IEntity {
     number?:number;
     date?:string;
     total?:number;
+    totalItems?:number;
     reference?:string;
     confirmed?:boolean;
     reference_date?:string;

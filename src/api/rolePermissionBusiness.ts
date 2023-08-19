@@ -3,10 +3,11 @@
 import { IRolepermissionCreate, IRolepermissionUpdate, IRolepermissionPartial, IRolepermissionView } from "./rolePermissionInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
-import { RoleBusiness } from "./roleBusiness";
 import { PermissionBusiness } from "./permissionBusiness";
+import { RoleBusiness } from "./roleBusiness";
 
 export class RolepermissionBusiness extends Business<IRolepermissionView> {
 
@@ -82,15 +83,16 @@ export class RolepermissionBusiness extends Business<IRolepermissionView> {
     "operator": "like"
   }
 };
+    override sortableProperties: any = ["role.name", "permission.name"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IRolepermissionView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IRolepermissionView>>;
     }
 
     override async create(rolePermission:IRolepermissionCreate):Promise<IRolepermissionView> {        
-        if (!rolePermission.id) {
-            rolePermission.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        
+
         return super.create(rolePermission) as Promise<IRolepermissionView>;
     }
 

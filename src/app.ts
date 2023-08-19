@@ -96,7 +96,7 @@ app.post('/login', async (req, res) => {
   res.header('x-refresh-token', refreshToken);
 
   // Return a success message in the response
-  res.json({ message: 'Login successful' });
+  res.json({ success: true, data: null, message: 'Login successful' });
 
 });
 
@@ -108,12 +108,20 @@ app.post('/refresh', (req, res) => {
 
   // If there is no refresh token, return an error
   if (!refreshToken) {
-    return res.status(401).json({ error: 'Missing refresh token' });
+    return res.status(401).json({
+      success: false,
+      message: 'Missing refresh token',
+      data: null
+    });
   }
 
   //check if revoked
   if (!middlewares.VALID_REFRESH_TOKENS.includes(refreshToken)) {
-    return res.status(403).json({ error: 'Revoked refresh token' });
+    return res.status(403).json({
+      success: false,
+      message: 'Revoked refresh token',
+      data: null
+    });
   }
 
 
@@ -122,7 +130,11 @@ app.post('/refresh', (req, res) => {
   try {
     payload = jwt.verify(refreshToken, API_SECRET_KEY);
   } catch (err) {
-    return res.status(403).json({ error: 'Invalid refresh token' });
+    return res.status(403).json({
+      success: false,
+      message: 'Invalid refresh token',
+      data: null
+    });
   }
 
   // If the verification succeeds, generate a new access token with the same user data as before
@@ -132,7 +144,7 @@ app.post('/refresh', (req, res) => {
   res.cookie('x-access-token', accessToken, { httpOnly: true, secure: false });
   res.set('x-access-token', accessToken);
   // Return a success message in the response
-  res.json({ accessToken, message: 'Access token refreshed' });
+  res.json({ success: true, data: accessToken, message: 'Access token refreshed' });
 });
 
 //tester

@@ -29,7 +29,11 @@ export const authenticate = (req:Request, res:Response, next:NextFunction) => {
   var token = authHeader && authHeader.split(' ')[1];
   token = token || req.cookies['x-access-token'];
   if (!token) {
-    return res.status(401).send('Access token required in either 1. header authorization: bearer <token> 2. cookie x-access-token');
+    return res.status(401).json({
+      success: false,
+      message: 'Access token required in either 1. header authorization: bearer <token> 2. cookie x-access-token',
+      data: null
+    });
   }
 
   try {
@@ -43,7 +47,11 @@ export const authenticate = (req:Request, res:Response, next:NextFunction) => {
 
         //TODO: check if it is not invalidated manually
         if (!VALID_REFRESH_TOKENS.includes(refreshToken)) { 
-          return res.status(403).send('Invalid or expired access and refresh token: Revoked');
+          return res.status(403).send({
+            success: false,
+            message: 'Invalid or expired access and refresh token: Revoked',
+            data: null
+          });
         }
         //renew access token if refresh token is valid
         const accessToken = jwt.sign(payload, API_SECRET_KEY, { expiresIn: '15m' });
@@ -51,10 +59,18 @@ export const authenticate = (req:Request, res:Response, next:NextFunction) => {
         res.header('x-access-token', accessToken);
         next();
       } catch (err2) {
-        return res.status(403).send('Invalid or expired access and refresh token: ' + err);
+        return res.status(403).send({
+          success: false,
+          message: 'Invalid or expired access and refresh token: ' + err,
+          data: null
+        });
       }
     }
-    return res.status(403).send('Invalid access token: ' + err);
+    return res.status(403).send({
+      success: false,
+      message: 'Invalid access token: ' + err,
+      data: null
+    });
   }
 };
 

@@ -10,6 +10,7 @@ export class Saleitem extends Entity {
     description?:string;
     quantity:number;
     price:number;
+    total?:number;
 }
 
 export class SaleitemCreate extends Entity {
@@ -42,6 +43,7 @@ export class SaleitemView extends Entity {
     description?:string;
     quantity?:number;
     price?:number;
+    total?:number;
     sale?:SaleView;
     item?:ItemView;
 }

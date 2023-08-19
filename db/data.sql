@@ -37,10 +37,10 @@ insert into [customer] ([id], [name], [address], [contact], [currency_id], [paym
 insert into [customer] ([id], [name], [address], [contact], [currency_id], [payment_term]) values ('550e8400-e29b-41d4-a716-446655440002', 'Bob Johnson', '789 Oak St, Anytown USA', '+1 (555) 555-5557', 'JPY', 90);
 insert into [customer] ([id], [name], [address], [contact], [currency_id], [payment_term]) values ('550e8400-e29b-41d4-a716-446655440003', 'Alice Williams', '321 Pine St, Anytown USA', '+1 (555) 555-5558', 'GBP', 45);
 
-insert into [item] ([id], [name]) values ('550e8400-e29b-41d4-a716-446655440000', 'Microsoft Office');
-insert into [item] ([id], [name]) values ('550e8400-e29b-41d4-a716-446655440001', 'Adobe Creative Cloud');
-insert into [item] ([id], [name]) values ('550e8400-e29b-41d4-a716-446655440002', 'Salesforce CRM');
-insert into [item] ([id], [name]) values ('550e8400-e29b-41d4-a716-446655440003', 'Slack');
+insert into [item] ([id], [name], [category_id]) values ('550e8400-e29b-41d4-a716-446655440000', 'Microsoft Office', '550e8400-e29b-41d4-a716-446655440000');
+insert into [item] ([id], [name], [category_id]) values ('550e8400-e29b-41d4-a716-446655440001', 'Adobe Creative Cloud', '550e8400-e29b-41d4-a716-446655440001');
+insert into [item] ([id], [name], [category_id]) values ('550e8400-e29b-41d4-a716-446655440002', 'Salesforce CRM', '550e8400-e29b-41d4-a716-446655440002');
+insert into [item] ([id], [name], [category_id]) values ('550e8400-e29b-41d4-a716-446655440003', 'Slack', '550e8400-e29b-41d4-a716-446655440003');
 
 insert into [sale] ([id], [account_id], [company_id], [customer_id], [place], [number], [date], [currency_id], [total], [due_date], [reference_date], [confirmed]) values ('550e8400-e29b-41d4-a716-446655440000', '550e8400-e29b-41d4-a716-446655440000', '550e8400-e29b-41d4-a716-446655440000', '550e8400-e29b-41d4-a716-446655440000', 'New York, NY', 1, '2023-01-01', 'USD', 0, '2023-02-01', '2023-01-01', 1);
 insert into [sale] ([id], [account_id], [company_id], [customer_id], [place], [number], [date], [currency_id], [total], [due_date], [reference_date], [confirmed]) values ('550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440001', 'Los Angeles, CA', 2, '2023-02-01', 'EUR', 0, '2023-03-01', '2023-02-01', 1);
@@ -48,7 +48,7 @@ insert into [sale] ([id], [account_id], [company_id], [customer_id], [place], [n
 insert into [sale] ([id], [account_id], [company_id], [customer_id], [place], [number], [date], [currency_id], [total], [due_date], [reference_date], [confirmed]) values ('550e8400-e29b-41d4-a716-446655440003', '550e8400-e29b-41d4-a716-446655440003', '550e8400-e29b-41d4-a716-446655440003', '550e8400-e29b-41d4-a716-446655440003', 'Houston, TX', 4, '2023-04-01', 'GBP', 0, '2023-05-01', '2023-04-01', 0);
 
 insert into [saleItem] ([id], [sale_id], [item_id], [quantity], [price]) values ('550e8400-e29b-41d4-a716-446655440000', '550e8400-e29b-41d4-a716-446655440000', '550e8400-e29b-41d4-a716-446655440000', 1, 15.99);
-insert into [saleItem] ([id], [sale_id], [item_id], [quantity], [price]) values ('550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440001', 2, 534.95);
+insert into [saleItem] ([id], [sale_id], [item_id], [quantity], [price]) values ('550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440000', '550e8400-e29b-41d4-a716-446655440001', 2, 534.95);
 insert into [saleItem] ([id], [sale_id], [item_id], [quantity], [price]) values ('550e8400-e29b-41d4-a716-446655440002', '550e8400-e29b-41d4-a716-446655440002', '550e8400-e29b-41d4-a716-446655440002', 3, 42.0);
 insert into [saleItem] ([id], [sale_id], [item_id], [quantity], [price]) values ('550e8400-e29b-41d4-a716-446655440003', '550e8400-e29b-41d4-a716-446655440003', '550e8400-e29b-41d4-a716-446655440003', 2, 67.8);
 
@@ -93,3 +93,4 @@ insert into [permission] select 'ENTITY:SALEITEM:CREATE', 'Entity saleItem CREAT
 insert into [permission] select 'ENTITY:SALEITEM:UPDATE', 'Entity saleItem UPDATE', 'saleItem', 'UPDATE';
 insert into [permission] select 'ENTITY:SALEITEM:DELETE', 'Entity saleItem DELETE', 'saleItem', 'DELETE';
 insert into [permission] select 'ENTITY:SALEITEM:EXECUTE', 'Entity saleItem EXECUTE', 'saleItem', 'EXECUTE';
+insert into [rolePermission] select uuid(), r.id, p.id from role r, permission p;

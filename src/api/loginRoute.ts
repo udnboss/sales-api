@@ -63,14 +63,18 @@ loginRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ILoginView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ILoginView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "login entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 loginRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ loginRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) =>
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ILoginView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ILoginView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "login entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 loginRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ loginRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) 
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ILoginView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ILoginView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "login entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 loginRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

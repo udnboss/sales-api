@@ -3,6 +3,7 @@
 import { IRoleCreate, IRoleUpdate, IRolePartial, IRoleView } from "./roleInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
 import { RolepermissionBusiness } from "./rolePermissionBusiness";
@@ -61,15 +62,16 @@ export class RoleBusiness extends Business<IRoleView> {
     "operator": "like"
   }
 };
+    override sortableProperties: any = ["name"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IRoleView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IRoleView>>;
     }
 
     override async create(role:IRoleCreate):Promise<IRoleView> {        
-        if (!role.id) {
-            role.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        
+
         return super.create(role) as Promise<IRoleView>;
     }
 

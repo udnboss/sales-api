@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Entity, IQueryResult, IQuery } from "./base";
 
-import { CustomerView } from "./customerClasses";
 import { CompanyView } from "./companyClasses";
-import { SaleitemView } from "./saleItemClasses";
-import { AccountView } from "./accountClasses";
+import { CustomerView } from "./customerClasses";
 import { CurrencyView } from "./currencyClasses";
+import { AccountView } from "./accountClasses";
+import { SaleitemView } from "./saleItemClasses";
 
 export class Sale extends Entity {
     company_id:string;
@@ -15,7 +15,8 @@ export class Sale extends Entity {
     place?:string;
     number?:number;
     date:string;
-    total:number;
+    total?:number;
+    totalItems?:number;
     reference?:string;
     confirmed:boolean;
     reference_date?:string;
@@ -68,6 +69,7 @@ export class SaleView extends Entity {
     number?:number;
     date?:string;
     total?:number;
+    totalItems?:number;
     reference?:string;
     confirmed?:boolean;
     reference_date?:string;

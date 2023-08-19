@@ -63,14 +63,18 @@ customerRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) =
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICustomerView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICustomerView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "customer entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 customerRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ customerRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res)
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICustomerView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICustomerView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "customer entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 customerRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ customerRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, re
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ICustomerView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ICustomerView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "customer entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 customerRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

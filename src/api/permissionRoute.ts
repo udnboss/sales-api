@@ -63,14 +63,18 @@ permissionRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res)
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IPermissionView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IPermissionView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "permission entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 permissionRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ permissionRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, re
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IPermissionView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IPermissionView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "permission entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 permissionRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ permissionRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, 
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as IPermissionView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as IPermissionView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "permission entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 permissionRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

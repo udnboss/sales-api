@@ -63,14 +63,18 @@ saleRouter.post<{}, MessageResponse | ErrorResponse>("/", async (req, res) => {
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ISaleView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ISaleView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "sale entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 saleRouter.get<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -112,14 +116,18 @@ saleRouter.put<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => 
         return;
     }
 
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ISaleView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ISaleView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "sale entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 saleRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {
@@ -147,14 +155,18 @@ saleRouter.patch<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) =
         return;
     }
     
-    //TODO: check for error
-    const viewEntity = await business.getById(entity.id) as ISaleView;
-    const message = {
-        success: true,
-        message: "successful",
-        data: viewEntity
-    };
-    res.json(message);
+    try {
+        const viewEntity = await business.getById(entity.id, 2) as ISaleView;
+        const message = {
+            success: true,
+            message: "successful",
+            data: viewEntity
+        };
+        return res.json(message);
+    } catch (err) {
+        res.status(500).json({ success: false, message: "sale entity could not be retrieved after being created" });
+        return;
+    }
 });
 
 saleRouter.delete<{}, MessageResponse | ErrorResponse>("/:id", async (req, res) => {

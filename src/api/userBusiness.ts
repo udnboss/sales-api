@@ -3,6 +3,7 @@
 import { IUserCreate, IUserUpdate, IUserPartial, IUserView } from "./userInterfaces";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { IQueryResult, IQuery, Context, Business, IDataQuery, ICondition, Operator } from "./base";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { randomUUID } from "crypto";
 
 import { LoginBusiness } from "./loginBusiness";
@@ -86,15 +87,16 @@ export class UserBusiness extends Business<IUserView> {
     "operator": "in"
   }
 };
+    override sortableProperties: any = ["name", "email"];
     
     override async getAll(query:IDataQuery, maxDepth:number = 1):Promise<IQueryResult<IQuery, IUserView>> {
         return super.getAll(query, maxDepth) as Promise<IQueryResult<IQuery, IUserView>>;
     }
 
     override async create(user:IUserCreate):Promise<IUserView> {        
-        if (!user.id) {
-            user.id = randomUUID(); //TODO: autonumber case
-        }
+        
+        user.id = randomUUID();
+
         return super.create(user) as Promise<IUserView>;
     }
 
